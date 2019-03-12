@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.text.*?>
+<?import javafx.scene.effect.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane nodeOrientation="LEFT_TO_RIGHT" prefHeight="768.0" prefWidth="1024.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.MainController">
+   <children>
+      <MenuBar layoutX="131.0" layoutY="2.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+        <menus>
+          <Menu mnemonicParsing="false" text="File">
+            <items>
+              <MenuItem mnemonicParsing="false" text="Close" />
+            </items>
+          </Menu>
+          <Menu mnemonicParsing="false" text="Edit">
+            <items>
+              <MenuItem mnemonicParsing="false" text="Delete" />
+            </items>
+          </Menu>
+          <Menu mnemonicParsing="false" text="Help">
+            <items>
+              <MenuItem fx:id="aboutMenuItem" mnemonicParsing="false" onAction="#openAboutUsForm" text="About" />
+            </items>
+          </Menu>
+        </menus>
+      </MenuBar>
+      <TabPane fx:id="tabPane" layoutX="25.0" layoutY="25.0" prefHeight="376.0" prefWidth="298.0" side="LEFT" tabClosingPolicy="UNAVAILABLE" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="25.0">
+        <tabs>
+          <Tab text="Bậc 2">
+            <content>
+              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="246.0" prefWidth="286.0">
+                     <children>
+                        <Label layoutX="8.0" layoutY="54.0" text="Nhập hệ số:" />
+                        <Label layoutX="31.0" layoutY="81.0" text="Chỉ nhập phần nguyên hoặc phân số" />
+                        <Label layoutX="12.0" layoutY="114.0" text="f(x)=" />
+                        <TextField layoutX="62.0" layoutY="110.0" prefHeight="25.0" prefWidth="48.0" />
+                        <TextField layoutX="167.0" layoutY="110.0" prefHeight="25.0" prefWidth="51.0" />
+                        <Label layoutX="26.0" layoutY="162.0" text="Label" />
+                        <Label layoutX="119.0" layoutY="114.0" text="x^2+" />
+                        <TextField layoutX="63.0" layoutY="186.0" prefHeight="25.0" prefWidth="47.0" />
+                        <TextField layoutX="144.0" layoutY="186.0" prefHeight="25.0" prefWidth="59.0" />
+                     </children>
+                     <padding>
+                        <Insets left="10.0" />
+                     </padding>
+                  </AnchorPane>
+            </content>
+          </Tab>
+          <Tab text="Bậc 3">
+            <content>
+              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
+            </content>
+          </Tab>
+            <Tab text="Bậc 4 trùng phương">
+              <content>
+                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
+              </content>
+            </Tab>
+            <Tab text="Nhất biến">
+              <content>
+                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
+              </content>
+            </Tab>
+            <Tab text="Bậc 2/ bậc 1">
+              <content>
+                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
+              </content>
+            </Tab>
+        </tabs>
+      </TabPane>
+      <TextArea layoutX="1.0" layoutY="430.0" prefHeight="335.0" prefWidth="298.0" AnchorPane.bottomAnchor="3.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="430.0" />
+      <Button fx:id="btnKhaoSat" layoutY="401.0" mnemonicParsing="false" text="Khảo sát" />
+      <Button fx:id="btnZoomOut" layoutX="217.0" layoutY="402.0" mnemonicParsing="false" onAction="#ZoomOut" prefHeight="25.0" prefWidth="77.0" text="Zoom Out" />
+      <Button fx:id="btnNhapLai" layoutX="72.0" layoutY="401.0" mnemonicParsing="false" text="Nhập lại" />
+      <Button fx:id="btnZoomIn" layoutX="148.0" layoutY="402.0" mnemonicParsing="false" onAction="#ZoomIn" text="Zoom In" />
+      <Button fx:id="testBtn" layoutX="221.0" layoutY="462.0" mnemonicParsing="false" onAction="#TestButtonClicked" text="Test" />
+      <ScrollPane fx:id="scrollPane" layoutX="500.0" layoutY="24.0" prefHeight="744.0" prefWidth="726.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="298.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="24.0">
+        <content>
+          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="200.0" prefWidth="200.0" />
+        </content>
+      </ScrollPane>
+   </children>
+</AnchorPane>
