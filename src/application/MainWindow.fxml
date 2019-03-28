@@ -1,5 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.image.*?>
+<?import javafx.scene.*?>
 <?import javafx.scene.text.*?>
 <?import javafx.scene.effect.*?>
 <?import javafx.geometry.*?>
@@ -8,7 +10,7 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane nodeOrientation="LEFT_TO_RIGHT" prefHeight="768.0" prefWidth="1024.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.MainController">
+<AnchorPane minHeight="-Infinity" minWidth="-Infinity" nodeOrientation="LEFT_TO_RIGHT" prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.MainController">
    <children>
       <MenuBar layoutX="131.0" layoutY="2.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
         <menus>
@@ -29,21 +31,33 @@
           </Menu>
         </menus>
       </MenuBar>
-      <TabPane fx:id="tabPane" layoutX="25.0" layoutY="25.0" prefHeight="376.0" prefWidth="298.0" side="LEFT" tabClosingPolicy="UNAVAILABLE" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="25.0">
+      <TabPane fx:id="tabPane" layoutX="25.0" layoutY="25.0" prefHeight="171.0" prefWidth="354.0" tabClosingPolicy="UNAVAILABLE" AnchorPane.bottomAnchor="404.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="25.0">
         <tabs>
           <Tab text="Bậc 2">
             <content>
-              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="246.0" prefWidth="286.0">
+              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="242.0" prefWidth="542.0">
                      <children>
-                        <Label layoutX="8.0" layoutY="54.0" text="Nhập hệ số:" />
-                        <Label layoutX="31.0" layoutY="81.0" text="Chỉ nhập phần nguyên hoặc phân số" />
-                        <Label layoutX="12.0" layoutY="114.0" text="f(x)=" />
-                        <TextField layoutX="62.0" layoutY="110.0" prefHeight="25.0" prefWidth="48.0" />
-                        <TextField layoutX="167.0" layoutY="110.0" prefHeight="25.0" prefWidth="51.0" />
-                        <Label layoutX="26.0" layoutY="162.0" text="Label" />
-                        <Label layoutX="119.0" layoutY="114.0" text="x^2+" />
-                        <TextField layoutX="63.0" layoutY="186.0" prefHeight="25.0" prefWidth="47.0" />
-                        <TextField layoutX="144.0" layoutY="186.0" prefHeight="25.0" prefWidth="59.0" />
+                        <Label layoutX="16.0" layoutY="14.0" text="Nhập hệ số:">
+                           <font>
+                              <Font size="18.0" />
+                           </font></Label>
+                        <Label layoutX="47.0" layoutY="41.0" text="Chỉ nhập phần nguyên hoặc phân số" />
+                        <Label layoutX="11.0" layoutY="81.0" text="f(x)=">
+                           <font>
+                              <Font size="15.0" />
+                           </font></Label>
+                        <TextField fx:id="tf_a2" layoutX="46.0" layoutY="79.0" prefHeight="25.0" prefWidth="48.0" />
+                        <TextField fx:id="tf_b2" layoutX="126.0" layoutY="81.0" prefHeight="25.0" prefWidth="49.0" />
+                        <TextField fx:id="tf_c2" layoutX="199.0" layoutY="81.0" prefHeight="25.0" prefWidth="51.0" />
+                        <Label layoutX="97.0" layoutY="79.0" text="x²+">
+                           <font>
+                              <Font size="19.0" />
+                           </font></Label>
+                        <Label layoutX="177.0" layoutY="79.0" text="x+">
+                           <font>
+                              <Font size="19.0" />
+                           </font>
+                        </Label>
                      </children>
                      <padding>
                         <Insets left="10.0" />
@@ -52,37 +66,133 @@
             </content>
           </Tab>
           <Tab text="Bậc 3">
-            <content>
-              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
-            </content>
+               <content>
+                  <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="242.0" prefWidth="542.0">
+                     <children>
+                        <Label layoutX="16.0" layoutY="14.0" text="Nhập hệ số:">
+                           <font>
+                              <Font size="18.0" />
+                           </font>
+                        </Label>
+                        <Label layoutX="47.0" layoutY="41.0" text="Chỉ nhập phần nguyên hoặc phân số" />
+                        <Label layoutX="14.0" layoutY="81.0" text="f(x)=">
+                           <font>
+                              <Font size="15.0" />
+                           </font>
+                        </Label>
+                        <TextField fx:id="tf_a3" layoutX="47.0" layoutY="79.0" prefHeight="25.0" prefWidth="48.0" />
+                        <TextField fx:id="tf_b3" layoutX="126.0" layoutY="80.0" prefHeight="25.0" prefWidth="51.0" />
+                        <Label layoutX="97.0" layoutY="78.0" text="x²+">
+                           <font>
+                              <Font size="19.0" />
+                           </font>
+                        </Label>
+                        <TextField fx:id="tf_c3" layoutX="213.0" layoutY="79.0" prefHeight="25.0" prefWidth="48.0" />
+                        <Label layoutX="184.0" layoutY="78.0" text="x²+">
+                           <font>
+                              <Font size="19.0" />
+                           </font>
+                        </Label>
+                        <TextField fx:id="tf_d3" layoutX="290.0" layoutY="80.0" prefHeight="25.0" prefWidth="48.0" />
+                        <Label layoutX="261.0" layoutY="78.0" text="x²+">
+                           <font>
+                              <Font size="19.0" />
+                           </font>
+                        </Label>
+                     </children>
+                     <padding>
+                        <Insets left="10.0" />
+                     </padding>
+                  </AnchorPane>
+               </content>
           </Tab>
             <Tab text="Bậc 4 trùng phương">
-              <content>
-                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
-              </content>
+               <content>
+                  <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="242.0" prefWidth="542.0">
+                     <children>
+                        <Label layoutX="16.0" layoutY="14.0" text="Nhập hệ số:">
+                           <font>
+                              <Font size="18.0" />
+                           </font>
+                        </Label>
+                        <Label layoutX="47.0" layoutY="41.0" text="Chỉ nhập phần nguyên hoặc phân số" />
+                        <Label layoutX="16.0" layoutY="81.0" text="f(x)=">
+                           <font>
+                              <Font size="15.0" />
+                           </font>
+                        </Label>
+                        <TextField fx:id="tf_a4" layoutX="47.0" layoutY="79.0" prefHeight="25.0" prefWidth="48.0" />
+                        <TextField fx:id="tf_b4" layoutX="126.0" layoutY="79.0" prefHeight="25.0" prefWidth="51.0" />
+                        <Label layoutX="97.0" layoutY="78.0" text="x²+">
+                           <font>
+                              <Font size="19.0" />
+                           </font>
+                        </Label>
+                        <TextField fx:id="tf_c4" layoutX="206.0" layoutY="80.0" prefHeight="25.0" prefWidth="51.0" />
+                        <Label layoutX="177.0" layoutY="78.0" text="x²+">
+                           <font>
+                              <Font size="19.0" />
+                           </font>
+                        </Label>
+                     </children>
+                     <padding>
+                        <Insets left="10.0" />
+                     </padding>
+                  </AnchorPane>
+               </content>
             </Tab>
             <Tab text="Nhất biến">
-              <content>
-                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
-              </content>
-            </Tab>
-            <Tab text="Bậc 2/ bậc 1">
-              <content>
-                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
-              </content>
+               <content>
+                  <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="242.0" prefWidth="542.0">
+                     <children>
+                        <Label layoutX="16.0" layoutY="14.0" text="Nhập hệ số:">
+                           <font>
+                              <Font size="18.0" />
+                           </font>
+                        </Label>
+                        <Label layoutX="47.0" layoutY="41.0" text="Chỉ nhập phần nguyên hoặc phân số" />
+                        <Label layoutX="16.0" layoutY="81.0" text="f(x)=">
+                           <font>
+                              <Font size="15.0" />
+                           </font>
+                        </Label>
+                        <TextField fx:id="tf_a1" layoutX="47.0" layoutY="79.0" prefHeight="25.0" prefWidth="48.0" />
+                        <TextField fx:id="tf_b1" layoutX="126.0" layoutY="79.0" prefHeight="25.0" prefWidth="51.0" />
+                        <Label layoutX="100.0" layoutY="78.0" text="x+">
+                           <font>
+                              <Font size="19.0" />
+                           </font>
+                        </Label>
+                     </children>
+                     <padding>
+                        <Insets left="10.0" />
+                     </padding>
+                  </AnchorPane>
+               </content>
             </Tab>
         </tabs>
       </TabPane>
-      <TextArea layoutX="1.0" layoutY="430.0" prefHeight="335.0" prefWidth="298.0" AnchorPane.bottomAnchor="3.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="430.0" />
-      <Button fx:id="btnKhaoSat" layoutY="401.0" mnemonicParsing="false" text="Khảo sát" />
-      <Button fx:id="btnZoomOut" layoutX="217.0" layoutY="402.0" mnemonicParsing="false" onAction="#ZoomOut" prefHeight="25.0" prefWidth="77.0" text="Zoom Out" />
-      <Button fx:id="btnNhapLai" layoutX="72.0" layoutY="401.0" mnemonicParsing="false" text="Nhập lại" />
-      <Button fx:id="btnZoomIn" layoutX="148.0" layoutY="402.0" mnemonicParsing="false" onAction="#ZoomIn" text="Zoom In" />
-      <Button fx:id="testBtn" layoutX="221.0" layoutY="462.0" mnemonicParsing="false" onAction="#TestButtonClicked" text="Test" />
-      <ScrollPane fx:id="scrollPane" layoutX="500.0" layoutY="24.0" prefHeight="744.0" prefWidth="726.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="298.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="24.0">
+      <ScrollPane layoutY="317.0" prefHeight="285.0" prefViewportHeight="469.0" prefViewportWidth="541.0" prefWidth="352.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="317.0">
+         <content>
+            <TextArea layoutX="1.0" layoutY="296.0" prefHeight="748.0" prefWidth="338.0" AnchorPane.leftAnchor="0.0" />
+         </content>
+      </ScrollPane>
+      <ScrollPane fx:id="scrollPane" layoutX="352.0" layoutY="24.0" minHeight="-Infinity" minWidth="-Infinity" prefHeight="426.0" prefWidth="448.0" AnchorPane.bottomAnchor="150.0" AnchorPane.leftAnchor="352.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="24.0">
         <content>
-          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="200.0" prefWidth="200.0" />
+          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="412.0" prefWidth="447.0" />
         </content>
       </ScrollPane>
+      <StackPane layoutX="352.0" layoutY="449.0" prefHeight="151.0" prefWidth="448.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="352.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="449.0">
+         <children>
+            <Group fx:id="group" />
+         </children>
+      </StackPane>
+      <Button fx:id="btnKhaoSat" layoutX="31.0" layoutY="275.0" mnemonicParsing="false" onAction="#KhaoSat" text="Khảo sát" />
+      <Button fx:id="btnNhapLai" layoutX="118.0" layoutY="275.0" mnemonicParsing="false" onAction="#NhapLai" text="Nhập lại" />
+      <Label layoutX="20.0" layoutY="200.0" text="Giới hạn khảo sát" />
+      <TextField layoutX="149.0" layoutY="196.0" prefHeight="25.0" prefWidth="59.0" />
+      <TextField layoutX="242.0" layoutY="195.0" prefHeight="25.0" prefWidth="59.0" />
+      <Button fx:id="btnZoomOut" layoutX="233.0" layoutY="289.0" mnemonicParsing="false" onAction="#ZoomOut" prefHeight="25.0" prefWidth="77.0" text="Zoom Out" />
+      <Button fx:id="btnZoomIn" layoutX="233.0" layoutY="248.0" mnemonicParsing="false" onAction="#ZoomIn" prefHeight="25.0" prefWidth="77.0" text="Zoom In" />
    </children>
 </AnchorPane>
