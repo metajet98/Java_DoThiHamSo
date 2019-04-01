@@ -2,6 +2,7 @@ package application;
 
 
 
+import java.awt.TextArea;
 import java.io.Console;
 import java.io.IOException;
 import java.net.URL;
@@ -12,6 +13,8 @@ import java.util.regex.Pattern;
 
 import javax.security.auth.kerberos.KerberosTicket;
 
+import KhaoSat.PTB3;
+import javafx.application.Platform;
 import javafx.beans.binding.Bindings;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
@@ -46,6 +49,7 @@ import javafx.scene.layout.Pane;
 import javafx.scene.layout.StackPane;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.ArcType;
+import javafx.scene.shape.Line;
 import javafx.scene.shape.LineTo;
 import javafx.scene.shape.MoveTo;
 import javafx.scene.shape.Path;
@@ -110,8 +114,10 @@ public class MainController implements Initializable{
 	private TextField tf_a1;
 	@FXML
 	private TextField tf_b1;
-	
-
+	@FXML
+	private TextField tf_min;
+	@FXML
+	private TextField tf_max;
 	
 	@FXML
 	private Group group;
@@ -120,9 +126,15 @@ public class MainController implements Initializable{
 	@FXML
 	private ScrollPane scrollPane;
 	
+	@FXML
+	private MenuItem exitMenu;
+	@FXML
+	private javafx.scene.control.TextArea ta_KSHS;
+	
 	
 	Axes axes;
 	Plot plot;
+	int min,max;
 	
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
@@ -131,14 +143,32 @@ public class MainController implements Initializable{
         scrollPane.setPannable(true);
         scrollPane.setContent(stackPane);
         
-       
+        tf_min.setText(String.valueOf((int)(-DEFAULT_MAX_AXES/currentZoom)));
+		tf_max.setText(String.valueOf((int)(DEFAULT_MAX_AXES/currentZoom)));
+
+        min = (int)(-DEFAULT_MAX_AXES/currentZoom);
+        max = (int)(DEFAULT_MAX_AXES/currentZoom);
+	}
+	public void Close()
+	{
+		exitMenu.setOnAction(e->{
+        	Platform.runLater(new Runnable() {				
+				@Override
+				public void run() {
+					Platform.exit();			
+				}
+			});
+        });
 	}
 	public void Draw(double zoom, double a, double b, double c, double d, double e)
 	{	
 		currentZoom=(float) (currentZoom*zoom);
 		currentAxesMax=(int) (DEFAULT_MAX_AXES/currentZoom);
+		max = Integer.parseInt(tf_max.getText());
+		min = Integer.parseInt(tf_min.getText());
 		currentChiaAxes=(float) (DEFAULT_CHIA_AXES/currentZoom);
-
+		
+		
 		double w=0;
 		if(currentZoom<1)
 		{
@@ -149,15 +179,20 @@ public class MainController implements Initializable{
 			w=scrollPane.getWidth()*currentZoom;
 		}
 
+//		axes = new Axes(
+//				w, w,
+//                -currentAxesMax, currentAxesMax,currentChiaAxes,
+//                -currentAxesMax, currentAxesMax,currentChiaAxes
+//        );
 		axes = new Axes(
 				w, w,
-                -currentAxesMax, currentAxesMax,currentChiaAxes,
+                min, max,currentChiaAxes,
                 -currentAxesMax, currentAxesMax,currentChiaAxes
         );
 
         plot = new Plot(
                 x -> a*x*x*x*x+b*x*x*x+c*x*x+d*x+e,
-                -currentAxesMax, currentAxesMax, 0.05,
+                min, max, 0.05,
                 w,w,
                 axes
         );
@@ -173,7 +208,6 @@ public class MainController implements Initializable{
         
         
 	}
-
 	public void KhaoSatBacHai(double zoom)
 	{
 		double a=0,b=0,c=0;
@@ -197,6 +231,15 @@ public class MainController implements Initializable{
 			c=Double.parseDouble(tf_c3.getText().toString());
 			d=Double.parseDouble(tf_d3.getText().toString());
 			Draw(zoom, 0, a, b, c, d);
+			PTB3 ptb3 = new PTB3();
+			ptb3.NhapPT3(a, b, c, d,min,max);
+			ptb3.KhaoSatPTB3();
+			ta_KSHS.setText(ptb3.khaosat);
+			
+			
+			
+			ptb3.VeBangBienThien(group);
+			
 		} catch (Exception e) {
 			ThongBao("Lỗi nhập thông tin!");
 		}
