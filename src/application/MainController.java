@@ -118,6 +118,11 @@ public class MainController implements Initializable{
 	private TextField tf_min;
 	@FXML
 	private TextField tf_max;
+	@FXML
+	private TextField tf_c1;
+	@FXML
+	private TextField tf_d1;
+
 	
 	@FXML
 	private Group group;
@@ -259,12 +264,13 @@ public class MainController implements Initializable{
 	}
 	public void KhaoSatBacNhat(double zoom)
 	{
-		double a=0,b=0;
+		double a=0,b=0,c=0,d=0;
 		try {
 			a=Double.parseDouble(tf_a1.getText().toString());
 			b=Double.parseDouble(tf_b1.getText().toString());
-			
-			Draw(zoom, 0, 0, 0, a, b);
+			c = Double.parseDouble(tf_c1.getText().toString());
+			d = Double.parseDouble(tf_d1.getText().toString());
+			//Draw(zoom, 0, 0, 0, a, b,c,d);
 		} catch (Exception e) {
 			ThongBao("Lỗi nhập thông tin!");
 		}
