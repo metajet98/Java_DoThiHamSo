@@ -157,16 +157,16 @@
                               <Font size="15.0" />
                            </font>
                         </Label>
-                        <TextField fx:id="tf_a" layoutX="47.0" layoutY="61.0" prefHeight="25.0" prefWidth="48.0" />
-                        <TextField fx:id="tf_b" layoutX="143.0" layoutY="59.0" prefHeight="25.0" prefWidth="51.0" />
+                        <TextField fx:id="tf_a1" layoutX="47.0" layoutY="61.0" prefHeight="25.0" prefWidth="48.0" />
+                        <TextField fx:id="tf_b1" layoutX="143.0" layoutY="59.0" prefHeight="25.0" prefWidth="51.0" />
                         <Label layoutX="111.0" layoutY="58.0" text="x+">
                            <font>
                               <Font size="19.0" />
                            </font>
                         </Label>
                         <Line endX="50.0" layoutX="149.0" layoutY="93.0" startX="-100.0" strokeMiterLimit="5.0" />
-                        <TextField fx:id="tf_c" layoutX="47.0" layoutY="102.0" prefHeight="25.0" prefWidth="50.0" />
-                        <TextField fx:id="tf_d" layoutX="142.0" layoutY="102.0" prefHeight="25.0" prefWidth="53.0" />
+                        <TextField fx:id="tf_c1" layoutX="47.0" layoutY="102.0" prefHeight="25.0" prefWidth="50.0" />
+                        <TextField fx:id="tf_d1" layoutX="142.0" layoutY="102.0" prefHeight="25.0" prefWidth="53.0" />
                         <Label layoutX="109.0" layoutY="100.0" text="x+">
                            <font>
                               <Font size="19.0" />

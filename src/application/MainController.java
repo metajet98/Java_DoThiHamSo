@@ -14,6 +14,7 @@ import java.util.regex.Pattern;
 import javax.security.auth.kerberos.KerberosTicket;
 
 import KhaoSat.PTB3;
+import KhaoSat.PT_Hypebol;
 import javafx.application.Platform;
 import javafx.beans.binding.Bindings;
 import javafx.beans.value.ChangeListener;
@@ -138,7 +139,7 @@ public class MainController implements Initializable{
 	
 	
 	Axes axes;
-	Plot plot;
+	Plot plot,plot1;
 	int min,max;
 	
 	@Override
@@ -196,7 +197,7 @@ public class MainController implements Initializable{
         );
 
         plot = new Plot(
-                x -> a*x*x*x*x+b*x*x*x+c*x*x+d*x+e,
+                x -> ((a*x*x*x*x+b*x*x*x+c*x*x+d*x+e)),
                 min, max, 0.05,
                 w,w,
                 axes
@@ -206,6 +207,59 @@ public class MainController implements Initializable{
         
         stackPane.getChildren().clear();
         stackPane.getChildren().add(plot);
+        stackPane.setPadding(new Insets(20));
+        stackPane.setStyle("-fx-background-color: rgb(35, 39, 50);");
+        stackPane.setBackground(new Background(new BackgroundFill(Color.rgb(10, 10, 20), CornerRadii.EMPTY, Insets.EMPTY)));
+        
+        
+        
+	}
+	public void Draw(double zoom, double a, double b, double c, double d)
+	{	
+		currentZoom=(float) (currentZoom*zoom);
+		currentAxesMax=(int) (DEFAULT_MAX_AXES/currentZoom);
+		max = Integer.parseInt(tf_max.getText());
+		min = Integer.parseInt(tf_min.getText());
+		currentChiaAxes=(float) (DEFAULT_CHIA_AXES/currentZoom);
+		
+		
+		double w=0;
+		if(currentZoom<1)
+		{
+			w=scrollPane.getWidth();
+		}
+		else 
+		{
+			w=scrollPane.getWidth()*currentZoom;
+		}
+
+//		axes = new Axes(
+//				w, w,
+//                -currentAxesMax, currentAxesMax,currentChiaAxes,
+//                -currentAxesMax, currentAxesMax,currentChiaAxes
+//        );
+		axes = new Axes(
+				w, w,
+                min, max,currentChiaAxes,
+                -currentAxesMax, currentAxesMax,currentChiaAxes
+        );
+
+        plot = new Plot(
+                x -> (a*x+b) / (c*x + d),
+                min, max, 0.05,
+                w,w,
+                axes
+        );
+        plot1 = new Plot(
+                y -> a/c,
+                min, max, 0.05,
+                w,w,
+                axes
+        );
+        
+        
+        stackPane.getChildren().clear();
+        stackPane.getChildren().addAll(plot,plot1);
         stackPane.setPadding(new Insets(20));
         stackPane.setStyle("-fx-background-color: rgb(35, 39, 50);");
         stackPane.setBackground(new Background(new BackgroundFill(Color.rgb(10, 10, 20), CornerRadii.EMPTY, Insets.EMPTY)));
@@ -265,15 +319,34 @@ public class MainController implements Initializable{
 	public void KhaoSatBacNhat(double zoom)
 	{
 		double a=0,b=0,c=0,d=0;
-		try {
-			a=Double.parseDouble(tf_a1.getText().toString());
-			b=Double.parseDouble(tf_b1.getText().toString());
-			c = Double.parseDouble(tf_c1.getText().toString());
-			d = Double.parseDouble(tf_d1.getText().toString());
-			//Draw(zoom, 0, 0, 0, a, b,c,d);
-		} catch (Exception e) {
-			ThongBao("Lỗi nhập thông tin!");
-		}
+//		try {
+//			a = Double.parseDouble(tf_a1.getText().toString());
+//			b = Double.parseDouble(tf_b1.getText().toString());
+//			c = Double.parseDouble(tf_c1.getText().toString());
+//			d = Double.parseDouble(tf_d1.getText().toString());
+//			Draw(zoom,a, b,c,d);
+//			
+//			PT_Hypebol hypebol = new PT_Hypebol();
+//			hypebol.NhapPT_Hypebol(a, b, c, d,min,max);
+//			hypebol.KhaoSatPT_Hypebol();
+//			ta_KSHS.setText(hypebol.khaosat);
+//			
+//			hypebol.VeBangBienThien(group);
+//		} catch (Exception e) {
+//			ThongBao("Lỗi nhập thông tin!");
+//		}
+		a = Double.parseDouble(tf_a1.getText().toString());
+		b = Double.parseDouble(tf_b1.getText().toString());
+		c = Double.parseDouble(tf_c1.getText().toString());
+		d = Double.parseDouble(tf_d1.getText().toString());
+		Draw(zoom,a, b,c,d);
+		
+		PT_Hypebol hypebol = new PT_Hypebol();
+		hypebol.NhapPT_Hypebol(a, b, c, d,min,max);
+		hypebol.KhaoSatPT_Hypebol();
+		ta_KSHS.setText(hypebol.khaosat);
+		
+		hypebol.VeBangBienThien(group);
 	}
 	private void ThongBao(String _msg)
 	{
