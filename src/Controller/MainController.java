@@ -1,4 +1,4 @@
-package application;
+package Controller;
 
 
 
@@ -13,6 +13,8 @@ import java.util.regex.Pattern;
 
 import javax.security.auth.kerberos.KerberosTicket;
 
+import Helper.Axes;
+import Helper.Plot;
 import KhaoSat.PTB3;
 import KhaoSat.PT_Hypebol;
 import javafx.application.Platform;

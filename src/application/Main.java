@@ -15,8 +15,10 @@ public class Main extends Application {
 		try {
 			Parent root=FXMLLoader.load(getClass().getResource("/application/MainWindow.fxml"));
 			
-			primaryStage.setTitle("Main");
+			primaryStage.setTitle("Khảo sát Hàm số");
 			primaryStage.setScene(new Scene(root));
+			primaryStage.setMinHeight(600);
+			primaryStage.setMinWidth(800);
 			primaryStage.show();
 			rootStage=primaryStage;
 		} catch(Exception e) {

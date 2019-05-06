@@ -1,4 +1,4 @@
-package application;
+package Helper;
 
 import javafx.beans.binding.Bindings;
 import javafx.geometry.Side;
