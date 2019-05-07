@@ -13,8 +13,8 @@ import java.util.regex.Pattern;
 
 import javax.security.auth.kerberos.KerberosTicket;
 
-import Helper.Axes;
-import Helper.Plot;
+import CoreDraw.Axes;
+import CoreDraw.Plot;
 import KhaoSat.PTB3;
 import KhaoSat.PT_Hypebol;
 import javafx.application.Platform;
@@ -168,7 +168,7 @@ public class MainController implements Initializable{
 			});
         });
 	}
-	public void Draw(double zoom, double a, double b, double c, double d, double e)
+	public void Draw(double zoom, double a, double b, double c, double d, double e)// vẽ dạng thường
 	{	
 		currentZoom=(float) (currentZoom*zoom);
 		currentAxesMax=(int) (DEFAULT_MAX_AXES/currentZoom);
@@ -216,7 +216,7 @@ public class MainController implements Initializable{
         
         
 	}
-	public void Draw(double zoom, double a, double b, double c, double d)
+	public void Draw(double zoom, double a, double b, double c, double d)// vẽ đồ thị theo dạng phân số
 	{	
 		currentZoom=(float) (currentZoom*zoom);
 		currentAxesMax=(int) (DEFAULT_MAX_AXES/currentZoom);
@@ -269,6 +269,25 @@ public class MainController implements Initializable{
         
         
 	}
+	public void Draw(Double zoom, Function<Double, Double> f) // vẽ dạng đặc biệt
+	{
+		currentZoom=(float) (currentZoom*zoom);
+		currentAxesMax=(int) (DEFAULT_MAX_AXES/currentZoom);
+		max = Integer.parseInt(tf_max.getText());
+		min = Integer.parseInt(tf_min.getText());
+		currentChiaAxes=(float) (DEFAULT_CHIA_AXES/currentZoom);
+		
+		
+		double w=0;
+		if(currentZoom<1)
+		{
+			w=scrollPane.getWidth();
+		}
+		else 
+		{
+			w=scrollPane.getWidth()*currentZoom;
+		}
+	}
 	public void KhaoSatBacHai(double zoom)
 	{
 		double a=0,b=0,c=0;
@@ -296,9 +315,7 @@ public class MainController implements Initializable{
 			ptb3.NhapPT3(a, b, c, d,min,max);
 			ptb3.KhaoSatPTB3();
 			ta_KSHS.setText(ptb3.khaosat);
-			
-			
-			
+						
 			ptb3.VeBangBienThien(group);
 			
 		} catch (Exception e) {
@@ -341,7 +358,12 @@ public class MainController implements Initializable{
 		b = Double.parseDouble(tf_b1.getText().toString());
 		c = Double.parseDouble(tf_c1.getText().toString());
 		d = Double.parseDouble(tf_d1.getText().toString());
-		Draw(zoom,a, b,c,d);
+		try {
+			Draw(zoom,a, b,c,d);
+		} catch (Exception e) {
+			
+		}
+		
 		
 		PT_Hypebol hypebol = new PT_Hypebol();
 		hypebol.NhapPT_Hypebol(a, b, c, d,min,max);
@@ -350,18 +372,11 @@ public class MainController implements Initializable{
 		
 		hypebol.VeBangBienThien(group);
 	}
-	private void ThongBao(String _msg)
+	public void KhaoSatTuyChon(double zoom)
 	{
-		Alert alert = new Alert(AlertType.INFORMATION);
-		alert.setTitle("Thông báo");
-		alert.setHeaderText("Thông báo!");
-		alert.setContentText(_msg);
-		alert.showAndWait().ifPresent(rs -> {
-		    if (rs == ButtonType.OK) {
-		        System.out.println("Confirmed Alert!");
-		    }
-		});
+		
 	}
+	
 	public void KhaoSat(ActionEvent actionEvent)
 	{	
 		
@@ -382,7 +397,9 @@ public class MainController implements Initializable{
 		case 3:
 			KhaoSatBacNhat(1);
 			break;
-
+		case 4:
+			KhaoSatTuyChon(1);
+			break;
 		default:
 			break;
 		}
@@ -406,6 +423,9 @@ public class MainController implements Initializable{
 			break;
 		case 3:
 			KhaoSatBacNhat(2);
+			break;
+		case 4:
+			KhaoSatTuyChon(2);
 			break;
 
 		default:
@@ -437,10 +457,14 @@ public class MainController implements Initializable{
 		case 3:
 			KhaoSatBacNhat(0.5);
 			break;
+		case 4:
+			KhaoSatTuyChon(0.5);
+			break;
 
 		default:
 			break;
 		}
+	    
 	    scrollPane.setVvalue(5.0);
 	    scrollPane.setHvalue(5.0);
 	}
@@ -462,6 +486,25 @@ public class MainController implements Initializable{
 			}
 		}
 	}
+	
+	
+	
+	private void ThongBao(String _msg)
+	{
+		Alert alert = new Alert(AlertType.INFORMATION);
+		alert.setTitle("Thông báo");
+		alert.setHeaderText("Thông báo!");
+		alert.setContentText(_msg);
+		alert.showAndWait().ifPresent(rs -> {
+		    if (rs == ButtonType.OK) {
+		        System.out.println("Confirmed Alert!");
+		    }
+		});
+	}
+	
+	
+	
+	
 	public void openAboutUsForm(ActionEvent event)
 	{
 		System.out.println("About Us clicked!");
@@ -503,6 +546,19 @@ public class MainController implements Initializable{
 		
 		return result;
 		
+	}
+	private Function<Double, Double> ConvertCustomInputFunction()
+	{	
+		Function<Double, Double> function= new Function<Double, Double>() {
+
+			@Override
+			public Double apply(Double t) {
+				// TODO Auto-generated method stub
+				return null;
+			}
+		};
+		
+		return function;
 	}
 	
 

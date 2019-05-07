@@ -1,4 +1,4 @@
-package Helper;
+package CoreDraw;
 
 import java.util.function.Function;
 

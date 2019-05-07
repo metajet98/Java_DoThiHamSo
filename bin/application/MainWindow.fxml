@@ -179,6 +179,25 @@
                   </AnchorPane>
                </content>
             </Tab>
+            <Tab text="Tùy chọn">
+              <content>
+                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                     <children>
+                        <Label layoutX="27.0" layoutY="25.0" text="Nhập hàm">
+                           <font>
+                              <Font size="18.0" />
+                           </font>
+                        </Label>
+                        <Label layoutX="27.0" layoutY="71.0" text="f(x)=">
+                           <font>
+                              <Font size="15.0" />
+                           </font>
+                        </Label>
+                        <TextField layoutX="69.0" layoutY="69.0" prefHeight="25.0" prefWidth="244.0" />
+                     </children>
+                  </AnchorPane>
+              </content>
+            </Tab>
         </tabs>
       </TabPane>
       <ScrollPane layoutY="317.0" prefHeight="285.0" prefViewportHeight="469.0" prefViewportWidth="541.0" prefWidth="352.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="317.0">
