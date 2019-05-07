@@ -193,7 +193,7 @@
                               <Font size="15.0" />
                            </font>
                         </Label>
-                        <TextField layoutX="69.0" layoutY="69.0" prefHeight="25.0" prefWidth="244.0" />
+                        <TextField fx:id="tf_custom" layoutX="69.0" layoutY="69.0" prefHeight="25.0" prefWidth="244.0" />
                      </children>
                   </AnchorPane>
               </content>

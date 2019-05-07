@@ -125,6 +125,8 @@ public class MainController implements Initializable{
 	private TextField tf_c1;
 	@FXML
 	private TextField tf_d1;
+	@FXML
+	private TextField tf_custom;
 
 	
 	@FXML
@@ -141,7 +143,7 @@ public class MainController implements Initializable{
 	
 	
 	Axes axes;
-	Plot plot,plot1;
+	Plot plot,plot1,plot2;
 	int min,max;
 	
 	@Override
@@ -245,7 +247,7 @@ public class MainController implements Initializable{
                 min, max,currentChiaAxes,
                 -currentAxesMax, currentAxesMax,currentChiaAxes
         );
-
+		 
         plot = new Plot(
                 x -> (a*x+b) / (c*x + d),
                 min, max, 0.05,
@@ -258,7 +260,12 @@ public class MainController implements Initializable{
                 w,w,
                 axes
         );
-        
+        plot2 = new Plot(
+                x -> (-d/c),
+                min, max, 0.05,
+                w,w,
+                axes
+        );
         
         stackPane.getChildren().clear();
         stackPane.getChildren().addAll(plot,plot1);
@@ -269,7 +276,7 @@ public class MainController implements Initializable{
         
         
 	}
-	public void Draw(Double zoom, Function<Double, Double> f) // vẽ dạng đặc biệt
+	public void Draw(Double zoom, String str) // vẽ dạng đặc biệt
 	{
 		currentZoom=(float) (currentZoom*zoom);
 		currentAxesMax=(int) (DEFAULT_MAX_AXES/currentZoom);
@@ -287,6 +294,25 @@ public class MainController implements Initializable{
 		{
 			w=scrollPane.getWidth()*currentZoom;
 		}
+		axes = new Axes(
+				w, w,
+                min, max,currentChiaAxes,
+                -currentAxesMax, currentAxesMax,currentChiaAxes
+        );
+		 
+        plot = new Plot(
+                str,
+                min, max, 0.05,
+                w,w,
+                axes
+        );
+        
+        stackPane.getChildren().clear();
+        stackPane.getChildren().addAll(plot);
+        stackPane.setPadding(new Insets(20));
+        stackPane.setStyle("-fx-background-color: rgb(35, 39, 50);");
+        stackPane.setBackground(new Background(new BackgroundFill(Color.rgb(10, 10, 20), CornerRadii.EMPTY, Insets.EMPTY)));
+        
 	}
 	public void KhaoSatBacHai(double zoom)
 	{
@@ -338,30 +364,21 @@ public class MainController implements Initializable{
 	public void KhaoSatBacNhat(double zoom)
 	{
 		double a=0,b=0,c=0,d=0;
-//		try {
-//			a = Double.parseDouble(tf_a1.getText().toString());
-//			b = Double.parseDouble(tf_b1.getText().toString());
-//			c = Double.parseDouble(tf_c1.getText().toString());
-//			d = Double.parseDouble(tf_d1.getText().toString());
-//			Draw(zoom,a, b,c,d);
-//			
-//			PT_Hypebol hypebol = new PT_Hypebol();
-//			hypebol.NhapPT_Hypebol(a, b, c, d,min,max);
-//			hypebol.KhaoSatPT_Hypebol();
-//			ta_KSHS.setText(hypebol.khaosat);
-//			
-//			hypebol.VeBangBienThien(group);
-//		} catch (Exception e) {
-//			ThongBao("Lỗi nhập thông tin!");
-//		}
-		a = Double.parseDouble(tf_a1.getText().toString());
-		b = Double.parseDouble(tf_b1.getText().toString());
-		c = Double.parseDouble(tf_c1.getText().toString());
-		d = Double.parseDouble(tf_d1.getText().toString());
 		try {
+			a = Double.parseDouble(tf_a1.getText().toString());
+			b = Double.parseDouble(tf_b1.getText().toString());
+			c = Double.parseDouble(tf_c1.getText().toString());
+			d = Double.parseDouble(tf_d1.getText().toString());
 			Draw(zoom,a, b,c,d);
-		} catch (Exception e) {
 			
+			PT_Hypebol hypebol = new PT_Hypebol();
+			hypebol.NhapPT_Hypebol(a, b, c, d,min,max);
+			hypebol.KhaoSatPT_Hypebol();
+			ta_KSHS.setText(hypebol.khaosat);
+			
+			hypebol.VeBangBienThien(group);
+		} catch (Exception e) {
+			ThongBao("Lỗi nhập thông tin!");
 		}
 		
 		
@@ -374,6 +391,8 @@ public class MainController implements Initializable{
 	}
 	public void KhaoSatTuyChon(double zoom)
 	{
+		String pt = tf_custom.getText().trim();
+		Draw(zoom, pt);
 		
 	}
 	
