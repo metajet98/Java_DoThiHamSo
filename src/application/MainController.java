@@ -15,6 +15,7 @@ import javax.security.auth.kerberos.KerberosTicket;
 
 import KhaoSat.PTB3;
 import KhaoSat.PT_Hypebol;
+import KhaoSat.PT_TrungPhuong;
 import javafx.application.Platform;
 import javafx.beans.binding.Bindings;
 import javafx.beans.value.ChangeListener;
@@ -312,6 +313,12 @@ public class MainController implements Initializable{
 			c=Double.parseDouble(tf_c4.getText().toString());
 			
 			Draw(zoom, a, 0, b, 0, c);
+			
+			PT_TrungPhuong pt_TrungPhuong = new PT_TrungPhuong();
+			pt_TrungPhuong.NhapPT_TrungPhuong(a, b, c, min, max);
+			pt_TrungPhuong.KhaoSatPT_TrungPhuong();
+			ta_KSHS.setText(pt_TrungPhuong.khaosat);
+			pt_TrungPhuong.VeBangBienThien(group);
 		} catch (Exception e) {
 			ThongBao("Lỗi nhập thông tin!");
 		}
