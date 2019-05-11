@@ -17,6 +17,7 @@ import CoreDraw.Axes;
 import CoreDraw.Plot;
 import KhaoSat.PTB3;
 import KhaoSat.PT_Hypebol;
+import TienIch.TienIch;
 import javafx.application.Platform;
 import javafx.beans.binding.Bindings;
 import javafx.beans.value.ChangeListener;
@@ -323,7 +324,7 @@ public class MainController implements Initializable{
 			c=Double.parseDouble(tf_c2.getText().toString());
 			Draw(zoom, 0, 0, a, b, c);
 		} catch (Exception e) {
-			ThongBao("Lỗi nhập thông tin!");
+			TienIch.ThongBao("Lỗi nhập thông tin!");
 		}
 		
 		
@@ -345,7 +346,7 @@ public class MainController implements Initializable{
 			ptb3.VeBangBienThien(group);
 			
 		} catch (Exception e) {
-			ThongBao("Lỗi nhập thông tin!");
+			TienIch.ThongBao("Lỗi nhập thông tin!");
 		}
 	}
 	public void KhaoSatBacBon(double zoom)
@@ -358,7 +359,7 @@ public class MainController implements Initializable{
 			
 			Draw(zoom, a, 0, b, 0, c);
 		} catch (Exception e) {
-			ThongBao("Lỗi nhập thông tin!");
+			TienIch.ThongBao("Lỗi nhập thông tin!");
 		}
 	}
 	public void KhaoSatBacNhat(double zoom)
@@ -378,7 +379,7 @@ public class MainController implements Initializable{
 			
 			hypebol.VeBangBienThien(group);
 		} catch (Exception e) {
-			ThongBao("Lỗi nhập thông tin!");
+			TienIch.ThongBao("Lỗi nhập thông tin!");
 		}
 		
 		
@@ -508,18 +509,7 @@ public class MainController implements Initializable{
 	
 	
 	
-	private void ThongBao(String _msg)
-	{
-		Alert alert = new Alert(AlertType.INFORMATION);
-		alert.setTitle("Thông báo");
-		alert.setHeaderText("Thông báo!");
-		alert.setContentText(_msg);
-		alert.showAndWait().ifPresent(rs -> {
-		    if (rs == ButtonType.OK) {
-		        System.out.println("Confirmed Alert!");
-		    }
-		});
-	}
+	
 	
 	
 	
@@ -550,7 +540,7 @@ public class MainController implements Initializable{
 		} catch (Exception e) {
 			if(e instanceof NullPointerException)
 			{
-				ThongBao("Không được để trống trường nhập vào");
+				TienIch.ThongBao("Không được để trống trường nhập vào");
 			}
 			else if(e instanceof NumberFormatException)
 			{	

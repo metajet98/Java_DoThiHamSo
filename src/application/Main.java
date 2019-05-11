@@ -13,9 +13,9 @@ public class Main extends Application {
 	@Override
 	public void start(Stage primaryStage) {
 		try {
-			Parent root=FXMLLoader.load(getClass().getResource("/application/MainWindow.fxml"));
+			Parent root=FXMLLoader.load(getClass().getResource("/application/HoTroOnline.fxml"));
 			
-			primaryStage.setTitle("Khảo sát Hàm số");
+			primaryStage.setTitle("HoTroOnline");
 			primaryStage.setScene(new Scene(root));
 			primaryStage.setMinHeight(600);
 			primaryStage.setMinWidth(800);

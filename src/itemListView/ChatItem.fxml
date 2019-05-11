@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.text.*?>
+<?import com.jfoenix.controls.*?>
+<?import javafx.scene.control.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane fx:id="anchorPane" prefHeight="57.0" prefWidth="298.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <Label fx:id="lbUserName" layoutX="3.0" layoutY="1.0" prefHeight="17.0" prefWidth="136.0" text="Bắc Sư đệ" textOverrun="CLIP">
+         <font>
+            <Font name="System Bold" size="12.0" />
+         </font>
+      </Label>
+      <Label fx:id="lbTime" layoutX="160.0" layoutY="1.0" prefHeight="17.0" prefWidth="136.0" text="11/05/2019">
+         <font>
+            <Font name="System Italic" size="12.0" />
+         </font>
+      </Label>
+      <JFXTextArea fx:id="txtText" editable="false" layoutX="4.0" layoutY="18.0" prefHeight="42.0" prefWidth="292.0" text="Bla bla&#10;" />
+   </children>
+</AnchorPane>

@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.text.*?>
+<?import javafx.scene.control.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane fx:id="anchorPane" prefHeight="104.0" prefWidth="439.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <Label layoutX="11.0" layoutY="9.0" prefHeight="25.0" prefWidth="46.0" text="Tiêu đề">
+         <font>
+            <Font size="14.0" />
+         </font></Label>
+      <Label layoutX="10.0" layoutY="64.0" text="Người hỏi" />
+      <Label fx:id="lbLuotXem" layoutX="370.0" layoutY="13.0" text="Lượt xem: 0 " textAlignment="RIGHT" />
+      <Label fx:id="lbLuotCmt" layoutX="370.0" layoutY="32.0" prefHeight="17.0" prefWidth="65.0" text="Trả lời: 0" textAlignment="RIGHT" />
+      <Label layoutX="12.0" layoutY="84.0" text="tag" />
+      <Text fx:id="txtUserName" layoutX="79.0" layoutY="77.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Yasuo" wrappingWidth="250.13671875" />
+      <Text fx:id="txtTag" layoutX="78.0" layoutY="98.0" strokeType="OUTSIDE" strokeWidth="0.0" text="lol lop8 binhduong" wrappingWidth="250.13671875" />
+      <Button fx:id="btnXem" layoutX="370.0" layoutY="61.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="65.0" text="Xem" />
+      <Label fx:id="txtTieuDe" alignment="TOP_LEFT" contentDisplay="TOP" disable="true" layoutX="83.0" layoutY="8.0" prefHeight="52.0" prefWidth="274.0" text="Label" wrapText="true">
+         <font>
+            <Font name="System Bold" size="15.0" />
+         </font>
+      </Label>
+   </children>
+</AnchorPane>
