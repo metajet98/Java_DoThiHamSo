@@ -63,6 +63,14 @@ public class HoTroOnlineController implements Initializable  {
 	@FXML
 	private TextArea txtChatInput;
 	@FXML
+	private TextField txtTieuDeTopic;
+	@FXML
+	private TextField txtTag;
+	@FXML
+	private TextArea txtNoiDungTopic;
+	@FXML
+	private Button btnDangBai;
+	@FXML
 	private JFXListView<ChatMessenge> listViewChat;
 	@FXML
 	private JFXListView<Topic> listViewTopic;
@@ -144,6 +152,7 @@ public class HoTroOnlineController implements Initializable  {
 			            	listViewChat.setItems(listChat);
 			            	
 			            	break;
+			            	
 					default:
 						break;
 	
@@ -162,10 +171,15 @@ public class HoTroOnlineController implements Initializable  {
 			          switch (dc.getType()) {
 			            case ADDED:
 			            	Map<String, Object> temp=dc.getDocument().getData();
-			            	listTopic.add(new Topic(temp.get("noiDung").toString(), temp.get("askedName").toString(), temp.get("tag").toString(), temp.get("id").toString(), temp.get("time").toString(),Integer.parseInt(temp.get("luotXem").toString()) , Integer.parseInt(temp.get("luotCmt").toString()), temp.get("tieuDe").toString()));
+			            	listTopic.add(new Topic(temp.get("noiDung").toString(), temp.get("askedName").toString(), temp.get("tag").toString(), temp.get("id").toString(), temp.get("time").toString(),Integer.parseInt(temp.get("luotXem").toString()) , Integer.parseInt(temp.get("luotCmt").toString()), temp.get("tieuDe").toString(),db));
 			            	listViewTopic.setItems(listTopic);
 			            	
 			            	break;
+			            case MODIFIED:
+			            	Map<String, Object> tempMod= dc.getDocument().getData();
+			            	//bí :v
+			            	break;
+			            	
 					default:
 						break;
 	
@@ -216,6 +230,58 @@ public class HoTroOnlineController implements Initializable  {
 	{	
 		sendMessenge();		
 	}
+	//Ham event cua nui Dang bai
+	public void handleButtonDangBaiEvent(ActionEvent actionEvent) 
+	{	
+		if(txtTieuDeTopic.getText().isEmpty()||txtNoiDungTopic.getText().isEmpty()||txtUserName.getText().isEmpty())
+		{
+			TienIch.ThongBao("Không được để trống trường!");
+			return;
+		}
+		else 
+		{
+			try {
+				//lay ngay thang tu he thong
+				
+				Date date = new Date();
+				//lay username+text
+				String tacgia= txtUserName.getText();
+				String tieuDe= txtTieuDeTopic.getText();
+				String noiDung= txtNoiDungTopic.getText();
+				String tag= txtTag.getText();
+				//gop lai trong hashmap
+				Map<String, Object> docData = new HashMap<>();
+				docData.put("noiDung", noiDung);
+				docData.put("askedName", tacgia);
+				docData.put("luotXem", 0);
+				docData.put("luotCmt", 0);
+				docData.put("tag", tag);
+				docData.put("tieuDe", tieuDe);				
+				docData.put("time", dateFormat.format(date));
+				docData.put("timeForCompare", Long.parseUnsignedLong(dateFormatForCompare.format(date)));
+				//push len voi mot document() moi
+				
+				
+				DocumentReference documentReference= db.collection("topics").document();
+				docData.put("id", documentReference.getId());
+				
+				documentReference.set(docData);
+				
+			
+				
+				
+				
+				txtNoiDungTopic.clear();
+				txtTieuDeTopic.clear();
+			
+			} catch (Exception e) {
+				TienIch.ThongBao("Lỗi không xác định!"+e.toString());
+			}
+		}
+	}
+	
+	
+	
 	//Ham xu ly event khi nhap vao chat field, xu ly enter va shift enter
 	public void handleEnterAutoSend(KeyEvent keyEvent) 
 	{	

@@ -4,6 +4,7 @@ import java.io.IOException;
 
 import com.jfoenix.controls.JFXTextArea;
 
+import Controller.TraLoiTopicController;
 import Model.ChatMessenge;
 import Model.Topic;
 import javafx.event.ActionEvent;
@@ -72,7 +73,8 @@ public class TopicListViewCell extends ListCell<Topic>{
 
 				@Override
 				public void handle(ActionEvent event) {
-					System.out.println(item.getId());
+					TraLoiTopicController traLoiTopicController= new TraLoiTopicController(item);
+					traLoiTopicController.showStage();
 					
 				}
 			});

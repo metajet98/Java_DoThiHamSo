@@ -2,6 +2,8 @@ package Model;
 
 import java.io.Serializable;
 
+import com.google.cloud.firestore.Firestore;
+
 public class Topic implements Serializable {
 	private String noiDung;
 	private String askedName;
@@ -12,11 +14,12 @@ public class Topic implements Serializable {
 	private int luotCmt;
 	private String tieuDe;
 	
+	Firestore db;
 	
 	
 	
 	
-	public Topic(String noiDung, String askedName, String tag, String id, String time, int luotXem, int luotCmt, String tieuDe) {
+	public Topic(String noiDung, String askedName, String tag, String id, String time, int luotXem, int luotCmt, String tieuDe,Firestore db) {
 		super();
 		this.noiDung = noiDung;
 		this.askedName = askedName;
@@ -26,9 +29,20 @@ public class Topic implements Serializable {
 		this.luotXem = luotXem;
 		this.luotCmt = luotCmt;
 		this.tieuDe= tieuDe;
+		this.db=db;
 	}
 	
 	
+	public Firestore getDb() {
+		return db;
+	}
+
+
+	public void setDb(Firestore db) {
+		this.db = db;
+	}
+
+
 	public String getNoiDung() {
 		return noiDung;
 	}
