@@ -240,18 +240,18 @@ public class PTB2 {
 	public void KhaoSatPTB2() {
 		//TXD
 		khaosat = null;	
-		setTXD("Tập Xác Định: D=R");
+		setTXD("Táº­p XÃ¡c Ä�á»‹nh: D=R");
 		double delta;
 		delta = (_b2*_b2 - 4*_a2*_c2);
 		if(_a2 >0) {
-				setGioiHan("\nKhi x tiến đến + oo thì \n lim y = + oo"+" \nKhi x tiến đến - oo thì \n lim y = + oo");		
+				setGioiHan("\nKhi x tiến đến + oo thì \n lim y = + oo"+" \nKhi x tiến tới - oo thì \n lim y = + oo");		
 				setXdiemuon((-1)*_b2/(2*_a2));
 				setYdiemuon((-1)*delta/(4*_a2));
 				String GTNN = String.valueOf(getYdiemuon());
 				setDBNB("Hàm số đồng biến trên khoảng ("+getXdiemuon() +"; +oo) \nHàm số nghịch biến trên khoảng (-oo;"+getXdiemuon()+") ");
 				setDiemUon("\n Điểm uốn I = ("+getXdiemuon()+";"+getYdiemuon()+") \n Trục đối xứng x= "+getXdiemuon()+".");
-				setGTNN("\nGiá trị nhỏ nhất: " +GTNN);
-				setGTLN("\nGía trị lớn nhất: Không xác định");
+				setGTNN("\nGiá trị lớn nhất của hàm số: " +GTNN);
+				setGTLN("\nGiá trị nhỏ nhất: Không xác định");
 		}else {
 			setGioiHan("\nKhi x tiến đến + oo thì \n lim y = - oo"+" \nKhi x tiến đến - oo thì \n lim y = - oo");		
 			setXdiemuon((-1)*_b2/(2*_a2));
@@ -260,11 +260,11 @@ public class PTB2 {
 			setDBNB("Hàm số nghịch biến trên khoảng ("+getXdiemuon() +"; +oo) \nHàm số đồng biến trên khoảng (-oo;"+getXdiemuon()+") ");
 			setDiemUon("\nĐiểm uốn I = ("+getXdiemuon()+";"+getYdiemuon()+") \nTrục đối xứng x= "+getXdiemuon()+".");
 			setGTLN("\nGiá trị lớn nhất: "+GTLN);
-			setGTNN("\nGía trị nhỏ nhất: Không xác định");
+			setGTNN("\nGiá trị nhỏ nhất: Không xác định");
 		}
     	khaosat= "TXĐ :"+getTXD()+'\n' + "Giới hạn :"+ getGioiHan() +'\n'+
 				getDBNB();
-    	//khaosat +="\n Phương trình y'' = "+ 6 * _a3 + " .x + " + 2 * _b3+" = 0  có nghiệm \n x = " + xdiemuon + " => I(" + xdiemuon + "," + ydiemuon + ")\n là điểm uốn của đồ thị hàm số đã cho \n";
+    	//khaosat +="\n PhÆ°Æ¡ng trÃ¬nh y'' = "+ 6 * _a3 + " .x + " + 2 * _b3+" = 0  cÃ³ nghiá»‡m \n x = " + xdiemuon + " => I(" + xdiemuon + "," + ydiemuon + ")\n lÃ  Ä‘iá»ƒm uá»‘n cá»§a Ä‘á»“ thá»‹ hÃ m sá»‘ Ä‘Ã£ cho \n";
     	khaosat += getDiemUon();
     	khaosat += getGTLN()+getGTNN();
 	}
