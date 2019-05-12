@@ -44,7 +44,7 @@ FXMLLoader mLoader;
 		{
 			if (mLoader == null) 
 			{
-                mLoader = new FXMLLoader(getClass().getResource("/itemListView/CommentItem.fxml"));
+                mLoader = new FXMLLoader(getClass().getClassLoader().getResource("CommentItem.fxml"));
                 mLoader.setController(this);
 
                 try {

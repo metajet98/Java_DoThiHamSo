@@ -51,7 +51,7 @@ public class TopicListViewCell extends ListCell<Topic>{
 		{
 			if (mLoader == null) 
 			{
-                mLoader = new FXMLLoader(getClass().getResource("/itemListView/HoiDapItem.fxml"));
+                mLoader = new FXMLLoader(getClass().getClassLoader().getResource("HoiDapItem.fxml"));
                 mLoader.setController(this);
 
                 try {

@@ -125,7 +125,7 @@ public class HoTroOnlineController implements Initializable  {
 	
 	
 	public void initFirestore() throws IOException, InterruptedException, ExecutionException {
-				
+		System.out.println("load Json File");		
 		FileInputStream serviceAccount =
 				  new FileInputStream("firestore.json");
 

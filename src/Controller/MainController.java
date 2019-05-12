@@ -519,7 +519,7 @@ public class MainController implements Initializable{
 		System.out.println("About Us clicked!");
 		Parent root;
         try {
-        	root= FXMLLoader.load(getClass().getResource("/application/AboutUs.fxml"));
+        	root= FXMLLoader.load(getClass().getResource("AboutUs.fxml"));
             Stage stage = new Stage();
             stage.setTitle("About Us");
             stage.setScene(new Scene(root, 450, 450));

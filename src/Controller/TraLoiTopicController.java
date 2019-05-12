@@ -81,7 +81,7 @@ public class TraLoiTopicController implements Initializable {
 		
 		this.thisStage= new Stage();
 		try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/application/TraLoiTopic.fxml"));
+            FXMLLoader loader = new FXMLLoader(getClass().getClassLoader().getResource("TraLoiTopic.fxml"));
 
             // Set this class as the controller
             loader.setController(this);

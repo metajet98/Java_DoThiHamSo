@@ -13,12 +13,14 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListCell;
+import javafx.scene.image.Image;
 import javafx.scene.layout.AnchorPane;
 	
 
 
 public class ChatMessageListViewCell extends ListCell<ChatMessenge>  {
 	
+
 	@FXML
 	private Label lbUserName;
 	@FXML
@@ -43,7 +45,7 @@ public class ChatMessageListViewCell extends ListCell<ChatMessenge>  {
 		{
 			if (mLoader == null) 
 			{
-                mLoader = new FXMLLoader(getClass().getResource("/itemListView/ChatItem.fxml"));
+                mLoader = new FXMLLoader(getClass().getClassLoader().getResource("ChatItem.fxml"));
                 mLoader.setController(this);
 
                 try {
@@ -53,7 +55,6 @@ public class ChatMessageListViewCell extends ListCell<ChatMessenge>  {
                 }
 
 			}
-			
 			lbUserName.setText(item.getUserName());
 			lbTime.setText(item.getTime());
 			txtText.setText(item.getText());

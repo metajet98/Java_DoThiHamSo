@@ -20,6 +20,13 @@
   <build>
     <sourceDirectory>src</sourceDirectory>
     <resources>
+    <resource>
+            <filtering>false</filtering>
+            <directory>src</directory>
+            <includes>
+                <include>**/*.fxml</include>
+            </includes>             
+        </resource>
       <resource>
         <directory>src</directory>
         <excludes>

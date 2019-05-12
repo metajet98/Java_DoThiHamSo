@@ -13,12 +13,17 @@ public class Main extends Application {
 	@Override
 	public void start(Stage primaryStage) {
 		try {
-			Parent root=FXMLLoader.load(getClass().getResource("/application/HoTroOnline.fxml"));
+			System.out.println("Load Main fxml file");
 			
-			primaryStage.setTitle("HoTroOnline");
+			Parent root=FXMLLoader.load(getClass().getClassLoader().getResource("HoTroOnline.fxml"));
+			
+			System.out.println("Load Main fxml file succeed!");
+			
+			primaryStage.setTitle("Cộng đồng Hỗ trợ Online");
 			primaryStage.setScene(new Scene(root));
 			primaryStage.setMinHeight(600);
 			primaryStage.setMinWidth(800);
+
 			primaryStage.show();
 			rootStage=primaryStage;
 		} catch(Exception e) {
