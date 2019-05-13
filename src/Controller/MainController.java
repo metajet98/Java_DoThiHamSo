@@ -16,7 +16,9 @@ import javax.security.auth.kerberos.KerberosTicket;
 import CoreDraw.Axes;
 import CoreDraw.Plot;
 import KhaoSat.PTB3;
+import KhaoSat.PTTrungPhuong;
 import KhaoSat.PT_Hypebol;
+import TienIch.TienIch;
 import javafx.application.Platform;
 import javafx.beans.binding.Bindings;
 import javafx.beans.value.ChangeListener;
@@ -323,7 +325,7 @@ public class MainController implements Initializable{
 			c=Double.parseDouble(tf_c2.getText().toString());
 			Draw(zoom, 0, 0, a, b, c);
 		} catch (Exception e) {
-			ThongBao("Lỗi nhập thông tin!");
+			TienIch.ThongBao("Lỗi nhập thông tin!");
 		}
 		
 		
@@ -345,7 +347,7 @@ public class MainController implements Initializable{
 			ptb3.VeBangBienThien(group);
 			
 		} catch (Exception e) {
-			ThongBao("Lỗi nhập thông tin!");
+			TienIch.ThongBao("Lỗi nhập thông tin!");
 		}
 	}
 	public void KhaoSatBacBon(double zoom)
@@ -357,8 +359,14 @@ public class MainController implements Initializable{
 			c=Double.parseDouble(tf_c4.getText().toString());
 			
 			Draw(zoom, a, 0, b, 0, c);
+			PTTrungPhuong trungPhuong = new PTTrungPhuong();
+			trungPhuong.NhapPT4(a, b, c, min, max);
+			trungPhuong.KhaoSatPTTrungPhuong();
+			ta_KSHS.setText(trungPhuong.khaosat);
+			
+			trungPhuong.VeBangBienThien(group);
 		} catch (Exception e) {
-			ThongBao("Lỗi nhập thông tin!");
+			TienIch.ThongBao("Lỗi nhập thông tin!");
 		}
 	}
 	public void KhaoSatBacNhat(double zoom)
@@ -378,7 +386,7 @@ public class MainController implements Initializable{
 			
 			hypebol.VeBangBienThien(group);
 		} catch (Exception e) {
-			ThongBao("Lỗi nhập thông tin!");
+			TienIch.ThongBao("Lỗi nhập thông tin!");
 		}
 		
 		
@@ -508,18 +516,7 @@ public class MainController implements Initializable{
 	
 	
 	
-	private void ThongBao(String _msg)
-	{
-		Alert alert = new Alert(AlertType.INFORMATION);
-		alert.setTitle("Thông báo");
-		alert.setHeaderText("Thông báo!");
-		alert.setContentText(_msg);
-		alert.showAndWait().ifPresent(rs -> {
-		    if (rs == ButtonType.OK) {
-		        System.out.println("Confirmed Alert!");
-		    }
-		});
-	}
+	
 	
 	
 	
@@ -529,9 +526,9 @@ public class MainController implements Initializable{
 		System.out.println("About Us clicked!");
 		Parent root;
         try {
-        	root= FXMLLoader.load(getClass().getResource("/application/AboutUs.fxml"));
+        	root= FXMLLoader.load(getClass().getResource("AboutUs.fxml"));
             Stage stage = new Stage();
-            stage.setTitle("About Us");
+            stage.setTitle("Về chúng tôi");
             stage.setScene(new Scene(root, 450, 450));
             stage.show();
             //Main.getRootStage().hide();
@@ -541,45 +538,23 @@ public class MainController implements Initializable{
             e.printStackTrace();
         }
 	}
-	private double convertInput(String _input)
+	public void openOnlineHelpForm(ActionEvent event)
 	{
-		
-		double result=0;
-		try {
-			result= Double.parseDouble(_input);
-		} catch (Exception e) {
-			if(e instanceof NullPointerException)
-			{
-				ThongBao("Không được để trống trường nhập vào");
-			}
-			else if(e instanceof NumberFormatException)
-			{	
-				String regex="/^[0-9]+\\/[0-9]+$/";
-				
-				if(_input.matches(regex))
-				{
-					String a=_input.substring(0, _input.indexOf("/"));
-				}
-			}
-		}
-		
-		return result;
-		
+		System.out.println("Online Help clicked!");
+		Parent root;
+        try {
+        	root= FXMLLoader.load(getClass().getClassLoader().getResource("HoTroOnline.fxml"));
+            Stage stage = new Stage();
+            stage.setTitle("Cộng đồng Hỗ trợ Online");
+            stage.setScene(new Scene(root));
+			stage.setMinHeight(600);
+			stage.setMinWidth(800);
+            stage.show();
+        }
+        catch (IOException e) {
+            e.printStackTrace();
+        }
 	}
-	private Function<Double, Double> ConvertCustomInputFunction()
-	{	
-		Function<Double, Double> function= new Function<Double, Double>() {
-
-			@Override
-			public Double apply(Double t) {
-				// TODO Auto-generated method stub
-				return null;
-			}
-		};
-		
-		return function;
-	}
-	
 
     
 	

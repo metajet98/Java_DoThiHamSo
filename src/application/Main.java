@@ -13,12 +13,17 @@ public class Main extends Application {
 	@Override
 	public void start(Stage primaryStage) {
 		try {
-			Parent root=FXMLLoader.load(getClass().getResource("/application/MainWindow.fxml"));
+			System.out.println("Load Main fxml file");
 			
-			primaryStage.setTitle("Khảo sát Hàm số");
+			Parent root=FXMLLoader.load(getClass().getClassLoader().getResource("MainWindow.fxml"));
+			
+			System.out.println("Load Main fxml file succeed!");
+			
+			primaryStage.setTitle("Phần mềm hỗ trợ giải bài tập khảo sát hàm số");
 			primaryStage.setScene(new Scene(root));
-			primaryStage.setMinHeight(600);
-			primaryStage.setMinWidth(800);
+			primaryStage.setMinHeight(720);
+			primaryStage.setMinWidth(1280);
+
 			primaryStage.show();
 			rootStage=primaryStage;
 		} catch(Exception e) {
