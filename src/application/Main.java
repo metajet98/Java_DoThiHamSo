@@ -15,14 +15,14 @@ public class Main extends Application {
 		try {
 			System.out.println("Load Main fxml file");
 			
-			Parent root=FXMLLoader.load(getClass().getClassLoader().getResource("HoTroOnline.fxml"));
+			Parent root=FXMLLoader.load(getClass().getClassLoader().getResource("MainWindow.fxml"));
 			
 			System.out.println("Load Main fxml file succeed!");
 			
-			primaryStage.setTitle("Cộng đồng Hỗ trợ Online");
+			primaryStage.setTitle("Phần mềm hỗ trợ giải bài tập khảo sát hàm số");
 			primaryStage.setScene(new Scene(root));
-			primaryStage.setMinHeight(600);
-			primaryStage.setMinWidth(800);
+			primaryStage.setMinHeight(720);
+			primaryStage.setMinWidth(1280);
 
 			primaryStage.show();
 			rootStage=primaryStage;

@@ -16,6 +16,7 @@ import javax.security.auth.kerberos.KerberosTicket;
 import CoreDraw.Axes;
 import CoreDraw.Plot;
 import KhaoSat.PTB3;
+import KhaoSat.PTTrungPhuong;
 import KhaoSat.PT_Hypebol;
 import TienIch.TienIch;
 import javafx.application.Platform;
@@ -358,6 +359,12 @@ public class MainController implements Initializable{
 			c=Double.parseDouble(tf_c4.getText().toString());
 			
 			Draw(zoom, a, 0, b, 0, c);
+			PTTrungPhuong trungPhuong = new PTTrungPhuong();
+			trungPhuong.NhapPT4(a, b, c, min, max);
+			trungPhuong.KhaoSatPTTrungPhuong();
+			ta_KSHS.setText(trungPhuong.khaosat);
+			
+			trungPhuong.VeBangBienThien(group);
 		} catch (Exception e) {
 			TienIch.ThongBao("Lỗi nhập thông tin!");
 		}
@@ -521,7 +528,7 @@ public class MainController implements Initializable{
         try {
         	root= FXMLLoader.load(getClass().getResource("AboutUs.fxml"));
             Stage stage = new Stage();
-            stage.setTitle("About Us");
+            stage.setTitle("Về chúng tôi");
             stage.setScene(new Scene(root, 450, 450));
             stage.show();
             //Main.getRootStage().hide();
@@ -531,45 +538,23 @@ public class MainController implements Initializable{
             e.printStackTrace();
         }
 	}
-	private double convertInput(String _input)
+	public void openOnlineHelpForm(ActionEvent event)
 	{
-		
-		double result=0;
-		try {
-			result= Double.parseDouble(_input);
-		} catch (Exception e) {
-			if(e instanceof NullPointerException)
-			{
-				TienIch.ThongBao("Không được để trống trường nhập vào");
-			}
-			else if(e instanceof NumberFormatException)
-			{	
-				String regex="/^[0-9]+\\/[0-9]+$/";
-				
-				if(_input.matches(regex))
-				{
-					String a=_input.substring(0, _input.indexOf("/"));
-				}
-			}
-		}
-		
-		return result;
-		
+		System.out.println("Online Help clicked!");
+		Parent root;
+        try {
+        	root= FXMLLoader.load(getClass().getClassLoader().getResource("HoTroOnline.fxml"));
+            Stage stage = new Stage();
+            stage.setTitle("Cộng đồng Hỗ trợ Online");
+            stage.setScene(new Scene(root));
+			stage.setMinHeight(600);
+			stage.setMinWidth(800);
+            stage.show();
+        }
+        catch (IOException e) {
+            e.printStackTrace();
+        }
 	}
-	private Function<Double, Double> ConvertCustomInputFunction()
-	{	
-		Function<Double, Double> function= new Function<Double, Double>() {
-
-			@Override
-			public Double apply(Double t) {
-				// TODO Auto-generated method stub
-				return null;
-			}
-		};
-		
-		return function;
-	}
-	
 
     
 	

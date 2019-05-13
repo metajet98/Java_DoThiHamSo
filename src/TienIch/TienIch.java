@@ -8,8 +8,8 @@ public class TienIch {
 	public static void ThongBao(String _msg)
 	{
 		Alert alert = new Alert(AlertType.INFORMATION);
-		alert.setTitle("Thông báo");
-		alert.setHeaderText("Thông báo!");
+		alert.setTitle("ThÃ´ng bÃ¡o");
+		alert.setHeaderText("ThÃ´ng bÃ¡o!");
 		alert.setContentText(_msg);
 		alert.showAndWait().ifPresent(rs -> {
 		    if (rs == ButtonType.OK) {
