@@ -82,20 +82,20 @@
                               <Font size="15.0" />
                            </font>
                         </Label>
-                        <TextField fx:id="tf_a3" layoutX="47.0" layoutY="79.0" prefHeight="25.0" prefWidth="48.0" text="1" />
-                        <TextField fx:id="tf_b3" layoutX="126.0" layoutY="80.0" prefHeight="25.0" prefWidth="51.0" text="3" />
+                        <TextField fx:id="tf_a3" layoutX="47.0" layoutY="79.0" prefHeight="25.0" prefWidth="48.0" />
+                        <TextField fx:id="tf_b3" layoutX="126.0" layoutY="80.0" prefHeight="25.0" prefWidth="51.0" />
                         <Label layoutX="97.0" layoutY="78.0" text="x³+">
                            <font>
                               <Font size="19.0" />
                            </font>
                         </Label>
-                        <TextField fx:id="tf_c3" layoutX="213.0" layoutY="79.0" prefHeight="25.0" prefWidth="48.0" text="3" />
+                        <TextField fx:id="tf_c3" layoutX="213.0" layoutY="79.0" prefHeight="25.0" prefWidth="48.0" />
                         <Label layoutX="184.0" layoutY="78.0" text="x²+">
                            <font>
                               <Font size="19.0" />
                            </font>
                         </Label>
-                        <TextField fx:id="tf_d3" layoutX="290.0" layoutY="80.0" prefHeight="25.0" prefWidth="48.0" text="1" />
+                        <TextField fx:id="tf_d3" layoutX="290.0" layoutY="80.0" prefHeight="25.0" prefWidth="48.0" />
                         <Label layoutX="261.0" layoutY="78.0" text="x+">
                            <font>
                               <Font size="19.0" />
