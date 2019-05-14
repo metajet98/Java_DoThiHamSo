@@ -110,7 +110,7 @@ public class TraLoiTopicController implements Initializable {
 		txtSoLuotXem.setText("Lượt xem: "+topic.getLuotXem());
 		txtNguoiHoi.setText(topic.getAskedName());
 		
-		ApiFuture<Void> transaction =
+		ApiFuture<Void> transactionLuotXem =
 			    topic.getDb().runTransaction(
 			        new Transaction.Function<Void>() {
 			          @Override
@@ -185,6 +185,19 @@ public class TraLoiTopicController implements Initializable {
 						docData.put("timeForCompare", Long.parseUnsignedLong(dateFormatForCompare.format(date)));
 						//push len voi mot document() moi
 						topic.getDb().collection("topics").document(topic.getId()).collection("comments").document().set(docData);
+						
+						ApiFuture<Void> transactionLuotCmt =
+							    topic.getDb().runTransaction(
+							        new Transaction.Function<Void>() {
+							          @Override
+							          public Void updateCallback(Transaction transaction) throws Exception {
+							            // retrieve document and increment population field
+							            DocumentSnapshot snapshot = transaction.get(topic.getDb().collection("topics").document(topic.getId())).get();
+							            long oldLuotCmt = snapshot.getLong("luotCmt");
+							            transaction.update(topic.getDb().collection("topics").document(topic.getId()), "luotCmt", oldLuotCmt + 1);
+							            return null;
+							          }
+							        });
 						
 						txtComment.clear();
 					

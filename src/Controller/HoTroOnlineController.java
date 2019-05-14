@@ -7,6 +7,7 @@ import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 import java.util.ResourceBundle;
 import java.util.concurrent.ExecutionException;
@@ -125,19 +126,36 @@ public class HoTroOnlineController implements Initializable  {
 	
 	
 	public void initFirestore() throws IOException, InterruptedException, ExecutionException {
-		System.out.println("load Json File");		
+		
+		boolean hasBeenInitialized=false;
+		System.out.println("load Json File");
+		
 		FileInputStream serviceAccount =
 				  new FileInputStream("firestore.json");
-
+		
+		
+		
 		FirebaseOptions options = new FirebaseOptions.Builder()
 				  .setCredentials(GoogleCredentials.fromStream(serviceAccount))
 				  .setDatabaseUrl("https://kshshelponline.firebaseio.com")
 				  .build();
-
-				FirebaseApp.initializeApp(options);
-
-		db = FirestoreClient.getFirestore();
 		
+		
+		
+		List<FirebaseApp> firebaseApps = FirebaseApp.getApps();
+		for(FirebaseApp app : firebaseApps){
+		    if(app.getName().equals(FirebaseApp.DEFAULT_APP_NAME)){
+		        hasBeenInitialized=true;
+		    }
+		}
+
+		if(!hasBeenInitialized) {
+			FirebaseApp.initializeApp(options);
+
+		}
+		
+		db = FirestoreClient.getFirestore();
+
 
 		Query chatRef = db.collection("chats");
 		chatRef.addSnapshotListener(new EventListener<QuerySnapshot>() {
