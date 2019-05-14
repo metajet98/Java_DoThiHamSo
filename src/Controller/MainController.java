@@ -6,6 +6,7 @@ import java.awt.TextArea;
 import java.io.Console;
 import java.io.IOException;
 import java.net.URL;
+import java.util.ArrayList;
 import java.util.ResourceBundle;
 import java.util.Set;
 import java.util.function.Function;
@@ -13,8 +14,11 @@ import java.util.regex.Pattern;
 
 import javax.security.auth.kerberos.KerberosTicket;
 
+import com.google.cloud.firestore.v1beta1.FirestoreClient.ListCollectionIdsFixedSizeCollection;
+
 import CoreDraw.Axes;
 import CoreDraw.Plot;
+import KhaoSat.PTB2;
 import KhaoSat.PTB3;
 import KhaoSat.PTTrungPhuong;
 import KhaoSat.PT_Hypebol;
@@ -148,6 +152,8 @@ public class MainController implements Initializable{
 	Plot plot,plot1,plot2;
 	int min,max;
 	
+	ArrayList<String> _listFunc = new ArrayList<String>();
+	
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
 		
@@ -256,21 +262,21 @@ public class MainController implements Initializable{
                 w,w,
                 axes
         );
-        plot1 = new Plot(
-                y -> a/c,
-                min, max, 0.05,
-                w,w,
-                axes
-        );
-        plot2 = new Plot(
-                x -> (-d/c),
-                min, max, 0.05,
-                w,w,
-                axes
-        );
+//        plot1 = new Plot(
+//                y -> a/c,
+//                min, max, 0.05,
+//                w,w,
+//                axes
+//        );
+//        plot2 = new Plot(
+//                x -> (-d/c),
+//                min, max, 0.05,
+//                w,w,
+//                axes
+//        );
         
         stackPane.getChildren().clear();
-        stackPane.getChildren().addAll(plot,plot1);
+        stackPane.getChildren().addAll(plot);
         stackPane.setPadding(new Insets(20));
         stackPane.setStyle("-fx-background-color: rgb(35, 39, 50);");
         stackPane.setBackground(new Background(new BackgroundFill(Color.rgb(10, 10, 20), CornerRadii.EMPTY, Insets.EMPTY)));
@@ -278,7 +284,46 @@ public class MainController implements Initializable{
         
         
 	}
-	public void Draw(Double zoom, String str) // vẽ dạng đặc biệt
+	public void Draw(float zoom, String str) // vẽ dạng đặc biệt
+	{
+		currentZoom=zoom;
+		currentAxesMax=(int) currentZoom;
+		max = Integer.parseInt(tf_max.getText());
+		min = Integer.parseInt(tf_min.getText());
+		currentChiaAxes=currentChiaAxes;
+		
+		
+		double w=0;
+		if(currentZoom<1)
+		{
+			w=scrollPane.getWidth();
+		}
+		else 
+		{
+			w=scrollPane.getWidth()*currentZoom;
+		}
+		axes = new Axes(
+				w, w,
+                min, max,currentChiaAxes,
+                -currentAxesMax, currentAxesMax,currentChiaAxes
+        );
+		
+		if(str!="") {
+			plot = new Plot(
+	                str,
+	                min, max, 0.05,
+	                w,w,
+	                axes
+	        );
+		}
+        
+        stackPane.getChildren().addAll(plot);
+        stackPane.setPadding(new Insets(20));
+        stackPane.setStyle("-fx-background-color: rgb(35, 39, 50);");
+        stackPane.setBackground(new Background(new BackgroundFill(Color.rgb(10, 10, 20), CornerRadii.EMPTY, Insets.EMPTY)));
+        
+	}
+	public void Draw(Double zoom) // vẽ truc toa do
 	{
 		currentZoom=(float) (currentZoom*zoom);
 		currentAxesMax=(int) (DEFAULT_MAX_AXES/currentZoom);
@@ -301,16 +346,10 @@ public class MainController implements Initializable{
                 min, max,currentChiaAxes,
                 -currentAxesMax, currentAxesMax,currentChiaAxes
         );
-		 
-        plot = new Plot(
-                str,
-                min, max, 0.05,
-                w,w,
-                axes
-        );
+		
         
         stackPane.getChildren().clear();
-        stackPane.getChildren().addAll(plot);
+        stackPane.getChildren().addAll(axes);
         stackPane.setPadding(new Insets(20));
         stackPane.setStyle("-fx-background-color: rgb(35, 39, 50);");
         stackPane.setBackground(new Background(new BackgroundFill(Color.rgb(10, 10, 20), CornerRadii.EMPTY, Insets.EMPTY)));
@@ -324,6 +363,14 @@ public class MainController implements Initializable{
 			b=Double.parseDouble(tf_b2.getText().toString());
 			c=Double.parseDouble(tf_c2.getText().toString());
 			Draw(zoom, 0, 0, a, b, c);
+			
+			PTB2 ptb2 = new PTB2();
+			ptb2.NhapPTT2(a, b, c, min, max);
+			ptb2.KhaoSatPTB2();
+			ta_KSHS.setText(ptb2.khaosat);
+			
+			ptb2.VeBangBienThien(group);
+			
 		} catch (Exception e) {
 			TienIch.ThongBao("Lỗi nhập thông tin!");
 		}
@@ -399,8 +446,28 @@ public class MainController implements Initializable{
 	}
 	public void KhaoSatTuyChon(double zoom)
 	{
-		String pt = tf_custom.getText().trim();
-		Draw(zoom, pt);
+		if(zoom==1)
+		{
+			stackPane.getChildren().clear();
+			String pt = tf_custom.getText().toLowerCase().trim();
+			_listFunc.add(pt);
+			String textFunc="";
+			for(String item : _listFunc) {
+				Draw(zoom, item);
+				textFunc+="y = "+item+'\n';
+			}
+			ta_KSHS.setText(textFunc);
+		}
+		else 
+		{
+			stackPane.getChildren().clear();
+			for(String item : _listFunc) {
+				Draw(zoom, item);
+			}
+		}
+		
+		
+		
 		
 	}
 	
@@ -425,6 +492,7 @@ public class MainController implements Initializable{
 			KhaoSatBacNhat(1);
 			break;
 		case 4:
+			
 			KhaoSatTuyChon(1);
 			break;
 		default:
@@ -452,6 +520,7 @@ public class MainController implements Initializable{
 			KhaoSatBacNhat(2);
 			break;
 		case 4:
+			
 			KhaoSatTuyChon(2);
 			break;
 
@@ -483,6 +552,7 @@ public class MainController implements Initializable{
 			break;
 		case 3:
 			KhaoSatBacNhat(0.5);
+			tf_custom.clear();
 			break;
 		case 4:
 			KhaoSatTuyChon(0.5);
@@ -496,7 +566,11 @@ public class MainController implements Initializable{
 	    scrollPane.setHvalue(5.0);
 	}
 	public void NhapLai(ActionEvent actionEvent)
-	{
+	{	
+		currentZoom=1;
+		currentChiaAxes=1;
+		currentAxesMax=20;
+		
 		for (Tab tab : tabPane.getTabs()) {
 			
 			System.out.println(tab.toString());
@@ -512,6 +586,11 @@ public class MainController implements Initializable{
 				}
 			}
 		}
+		ta_KSHS.clear();
+		group.getChildren().clear();
+		stackPane.getChildren().clear();
+		Draw(1.0);
+		_listFunc.clear();
 	}
 	
 	
@@ -526,7 +605,7 @@ public class MainController implements Initializable{
 		System.out.println("About Us clicked!");
 		Parent root;
         try {
-        	root= FXMLLoader.load(getClass().getResource("AboutUs.fxml"));
+        	root= FXMLLoader.load(getClass().getClassLoader().getResource("AboutUs.fxml"));
             Stage stage = new Stage();
             stage.setTitle("Về chúng tôi");
             stage.setScene(new Scene(root, 450, 450));
@@ -556,6 +635,5 @@ public class MainController implements Initializable{
         }
 	}
 
-    
 	
 }

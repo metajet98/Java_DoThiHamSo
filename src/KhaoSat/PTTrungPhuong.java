@@ -438,7 +438,7 @@ public class PTTrungPhuong {
 		}
 		khaosat = "TXĐ :" + getTXD() + '\n' + "Giới hạn :" + getGioiHan() + '\n' + get_yPhay() + '\n' + getDBNB();
 		khaosat += "\n"+getDiemUon();
-		khaosat += "Cực trị: \n" + getCuctri();
+		khaosat += "\nCực trị: \n" + getCuctri();
 //		khaosat += "\n GTLN :" + getGTLN();
 //		khaosat += "\n GTNN :" + getGTNN();
 	}
