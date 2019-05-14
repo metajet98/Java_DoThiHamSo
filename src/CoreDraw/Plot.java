@@ -64,7 +64,7 @@ public class Plot extends Pane {
             Axes axes
     ) {
         Path path = new Path();
-        path.setStroke(Color.ORANGE.deriveColor(0, 1, 1, 0.6));
+        path.setStroke(Color.RED.deriveColor(0, 1, 1, 0.6));
         path.setStrokeWidth(2);
 
         path.setClip(

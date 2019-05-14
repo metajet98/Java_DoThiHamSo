@@ -147,7 +147,7 @@ public class MainController implements Initializable{
 	@FXML
 	private javafx.scene.control.TextArea ta_KSHS;
 	
-	
+	String backgroundColor="-fx-background-color: rgb(255,255,255);";
 	Axes axes;
 	Plot plot,plot1,plot2;
 	int min,max;
@@ -166,6 +166,7 @@ public class MainController implements Initializable{
 
         min = (int)(-DEFAULT_MAX_AXES/currentZoom);
         max = (int)(DEFAULT_MAX_AXES/currentZoom);
+        
 	}
 	public void Close()
 	{
@@ -220,7 +221,7 @@ public class MainController implements Initializable{
         stackPane.getChildren().clear();
         stackPane.getChildren().add(plot);
         stackPane.setPadding(new Insets(20));
-        stackPane.setStyle("-fx-background-color: rgb(35, 39, 50);");
+        stackPane.setStyle(backgroundColor);
         stackPane.setBackground(new Background(new BackgroundFill(Color.rgb(10, 10, 20), CornerRadii.EMPTY, Insets.EMPTY)));
         
         
@@ -278,34 +279,30 @@ public class MainController implements Initializable{
         stackPane.getChildren().clear();
         stackPane.getChildren().addAll(plot);
         stackPane.setPadding(new Insets(20));
-        stackPane.setStyle("-fx-background-color: rgb(35, 39, 50);");
+        stackPane.setStyle(backgroundColor);
         stackPane.setBackground(new Background(new BackgroundFill(Color.rgb(10, 10, 20), CornerRadii.EMPTY, Insets.EMPTY)));
         
         
         
 	}
-	public void Draw(float zoom, String str) // vẽ dạng đặc biệt
+	public void Draw(float _currentZoom,int _currentAxesMax,float _currentChiaAxes, String str) // vẽ dạng đặc biệt
 	{
-		currentZoom=zoom;
-		currentAxesMax=(int) currentZoom;
-		max = Integer.parseInt(tf_max.getText());
-		min = Integer.parseInt(tf_min.getText());
-		currentChiaAxes=currentChiaAxes;
 		
 		
 		double w=0;
-		if(currentZoom<1)
+		if(_currentZoom<1)
 		{
+			
 			w=scrollPane.getWidth();
 		}
 		else 
 		{
-			w=scrollPane.getWidth()*currentZoom;
+			w=scrollPane.getWidth()*_currentZoom;
 		}
 		axes = new Axes(
 				w, w,
-                min, max,currentChiaAxes,
-                -currentAxesMax, currentAxesMax,currentChiaAxes
+                min, max,_currentChiaAxes,
+                min, max,_currentChiaAxes
         );
 		
 		if(str!="") {
@@ -319,7 +316,7 @@ public class MainController implements Initializable{
         
         stackPane.getChildren().addAll(plot);
         stackPane.setPadding(new Insets(20));
-        stackPane.setStyle("-fx-background-color: rgb(35, 39, 50);");
+        stackPane.setStyle(backgroundColor);
         stackPane.setBackground(new Background(new BackgroundFill(Color.rgb(10, 10, 20), CornerRadii.EMPTY, Insets.EMPTY)));
         
 	}
@@ -344,15 +341,15 @@ public class MainController implements Initializable{
 		axes = new Axes(
 				w, w,
                 min, max,currentChiaAxes,
-                -currentAxesMax, currentAxesMax,currentChiaAxes
+                min, max,currentChiaAxes
         );
 		
         
         stackPane.getChildren().clear();
         stackPane.getChildren().addAll(axes);
         stackPane.setPadding(new Insets(20));
-        stackPane.setStyle("-fx-background-color: rgb(35, 39, 50);");
-        stackPane.setBackground(new Background(new BackgroundFill(Color.rgb(10, 10, 20), CornerRadii.EMPTY, Insets.EMPTY)));
+        stackPane.setStyle(backgroundColor);
+        //stackPane.setBackground(new Background(new BackgroundFill(Color.rgb(10, 10, 20), CornerRadii.EMPTY, Insets.EMPTY)));
         
 	}
 	public void KhaoSatBacHai(double zoom)
@@ -445,7 +442,12 @@ public class MainController implements Initializable{
 		hypebol.VeBangBienThien(group);
 	}
 	public void KhaoSatTuyChon(double zoom)
-	{
+	{	
+		currentZoom=(float) (currentZoom*zoom);
+		max = Integer.parseInt(tf_max.getText());
+		min = Integer.parseInt(tf_min.getText());
+		currentChiaAxes= (float) (currentChiaAxes/zoom);
+		
 		if(zoom==1)
 		{
 			stackPane.getChildren().clear();
@@ -453,7 +455,7 @@ public class MainController implements Initializable{
 			_listFunc.add(pt);
 			String textFunc="";
 			for(String item : _listFunc) {
-				Draw(zoom, item);
+				Draw(currentZoom, currentAxesMax, currentChiaAxes, item);
 				textFunc+="y = "+item+'\n';
 			}
 			ta_KSHS.setText(textFunc);
@@ -462,7 +464,7 @@ public class MainController implements Initializable{
 		{
 			stackPane.getChildren().clear();
 			for(String item : _listFunc) {
-				Draw(zoom, item);
+				Draw(currentZoom, currentAxesMax, currentChiaAxes, item);
 			}
 		}
 		
