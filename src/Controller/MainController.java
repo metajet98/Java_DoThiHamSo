@@ -37,11 +37,13 @@ import javafx.scene.Group;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.SnapshotParameters;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.chart.NumberAxis;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
+import javafx.scene.image.WritableImage;
 import javafx.scene.control.Button;
 import javafx.scene.control.ButtonType;
 import javafx.scene.control.MenuBar;
@@ -492,6 +494,7 @@ public class MainController implements Initializable{
 			break;
 		case 3:
 			KhaoSatBacNhat(1);
+			test();
 			break;
 		case 4:
 			
@@ -635,6 +638,12 @@ public class MainController implements Initializable{
         catch (IOException e) {
             e.printStackTrace();
         }
+	}
+	public void test()
+	{
+		WritableImage image= stackPane.snapshot(new SnapshotParameters(), null);
+		
+		
 	}
 
 	

@@ -12,13 +12,12 @@
          <children>
             <TextField fx:id="txtUserName" layoutX="14.0" layoutY="345.0" prefHeight="25.0" prefWidth="87.0" />
             <Button fx:id="btnSendChat" layoutX="277.0" layoutY="400.0" mnemonicParsing="false" onAction="#handleButtonSendEvent" prefHeight="25.0" prefWidth="50.0" text="Gửi" />
-            <JFXListView fx:id="listViewChat" layoutX="13.0" prefHeight="315.0" prefWidth="315.0" />
             <TextArea fx:id="txtChatInput" layoutX="14.0" layoutY="400.0" onKeyPressed="#handleEnterAutoSend" prefHeight="135.0" prefWidth="252.0" />
             <Label layoutX="14.0" layoutY="322.0" prefHeight="17.0" prefWidth="87.0" text="Tên hiển thị" />
             <Label layoutX="14.0" layoutY="383.0" text="Nội dung" />
+            <ListView fx:id="listViewChat" layoutX="14.0" layoutY="14.0" prefHeight="307.0" prefWidth="317.0" />
          </children>
       </AnchorPane>
-      <JFXListView fx:id="listViewTopic" layoutX="22.0" layoutY="14.0" prefHeight="391.0" prefWidth="501.0" />
       <Label layoutX="22.0" layoutY="417.0" text="Tiêu đề" />
       <Label layoutX="17.0" layoutY="479.0" text="Nội dung" />
       <TextField fx:id="txtTieuDeTopic" layoutX="22.0" layoutY="444.0" prefHeight="25.0" prefWidth="493.0" />
@@ -26,5 +25,6 @@
       <Button fx:id="btnDangBai" layoutX="22.0" layoutY="590.0" mnemonicParsing="false" onAction="#handleButtonDangBaiEvent" prefHeight="25.0" prefWidth="69.0" text="Đăng bài" />
       <TextField fx:id="txtTag" layoutX="364.0" layoutY="590.0" />
       <Label layoutX="329.0" layoutY="594.0" text="Tag" />
+      <ListView fx:id="listViewTopic" layoutX="22.0" layoutY="21.0" prefHeight="382.0" prefWidth="493.0" />
    </children>
 </AnchorPane>
