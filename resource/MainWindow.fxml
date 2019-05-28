@@ -48,9 +48,9 @@
                            <font>
                               <Font size="15.0" />
                            </font></Label>
-                        <TextField fx:id="tf_a2" layoutX="46.0" layoutY="79.0" prefHeight="25.0" prefWidth="48.0" />
-                        <TextField fx:id="tf_b2" layoutX="126.0" layoutY="81.0" prefHeight="25.0" prefWidth="49.0" />
-                        <TextField fx:id="tf_c2" layoutX="199.0" layoutY="81.0" prefHeight="25.0" prefWidth="51.0" />
+                        <TextField fx:id="tf_a2" alignment="CENTER" layoutX="46.0" layoutY="79.0" prefHeight="25.0" prefWidth="50.0" promptText="a" />
+                        <TextField fx:id="tf_b2" alignment="CENTER" layoutX="126.0" layoutY="81.0" prefHeight="25.0" prefWidth="50.0" promptText="b" />
+                        <TextField fx:id="tf_c2" alignment="CENTER" layoutX="199.0" layoutY="81.0" prefHeight="25.0" prefWidth="50.0" promptText="c" />
                         <Label layoutX="97.0" layoutY="79.0" text="x²+">
                            <font>
                               <Font size="19.0" />
@@ -82,21 +82,21 @@
                               <Font size="15.0" />
                            </font>
                         </Label>
-                        <TextField fx:id="tf_a3" layoutX="47.0" layoutY="79.0" prefHeight="25.0" prefWidth="48.0" />
-                        <TextField fx:id="tf_b3" layoutX="126.0" layoutY="80.0" prefHeight="25.0" prefWidth="51.0" />
-                        <Label layoutX="97.0" layoutY="78.0" text="x³+">
+                        <TextField fx:id="tf_a3" alignment="CENTER" layoutX="45.0" layoutY="79.0" prefHeight="25.0" prefWidth="50.0" promptText="a" />
+                        <TextField fx:id="tf_b3" alignment="CENTER" layoutX="126.0" layoutY="80.0" prefHeight="25.0" prefWidth="50.0" promptText="b" />
+                        <Label layoutX="98.0" layoutY="78.0" text="x³+">
                            <font>
                               <Font size="19.0" />
                            </font>
                         </Label>
-                        <TextField fx:id="tf_c3" layoutX="213.0" layoutY="79.0" prefHeight="25.0" prefWidth="48.0" />
-                        <Label layoutX="184.0" layoutY="78.0" text="x²+">
+                        <TextField fx:id="tf_c3" alignment="CENTER" layoutX="213.0" layoutY="79.0" prefHeight="25.0" prefWidth="50.0" promptText="c" />
+                        <Label layoutX="182.0" layoutY="78.0" text="x²+">
                            <font>
                               <Font size="19.0" />
                            </font>
                         </Label>
-                        <TextField fx:id="tf_d3" layoutX="290.0" layoutY="80.0" prefHeight="25.0" prefWidth="48.0" />
-                        <Label layoutX="261.0" layoutY="78.0" text="x+">
+                        <TextField fx:id="tf_d3" alignment="CENTER" layoutX="290.0" layoutY="80.0" prefHeight="25.0" prefWidth="50.0" promptText="d" />
+                        <Label layoutX="266.0" layoutY="78.0" text="x+">
                            <font>
                               <Font size="19.0" />
                            </font>
@@ -123,15 +123,15 @@
                               <Font size="15.0" />
                            </font>
                         </Label>
-                        <TextField fx:id="tf_a4" layoutX="47.0" layoutY="79.0" prefHeight="25.0" prefWidth="48.0" />
-                        <TextField fx:id="tf_b4" layoutX="126.0" layoutY="79.0" prefHeight="25.0" prefWidth="51.0" />
-                        <Label layoutX="97.0" layoutY="78.0" text="x⁴+">
+                        <TextField fx:id="tf_a4" alignment="CENTER" layoutX="47.0" layoutY="79.0" prefHeight="25.0" prefWidth="50.0" promptText="a" />
+                        <TextField fx:id="tf_b4" alignment="CENTER" layoutX="127.0" layoutY="79.0" prefHeight="25.0" prefWidth="50.0" promptText="b" />
+                        <Label layoutX="98.0" layoutY="78.0" text="x⁴+">
                            <font>
                               <Font size="19.0" />
                            </font>
                         </Label>
-                        <TextField fx:id="tf_c4" layoutX="206.0" layoutY="80.0" prefHeight="25.0" prefWidth="51.0" />
-                        <Label layoutX="177.0" layoutY="78.0" text="x²+">
+                        <TextField fx:id="tf_c4" alignment="CENTER" layoutX="208.0" layoutY="80.0" prefHeight="25.0" prefWidth="50.0" promptText="c" />
+                        <Label layoutX="179.0" layoutY="78.0" text="x²+">
                            <font>
                               <Font size="19.0" />
                            </font>
@@ -158,16 +158,16 @@
                               <Font size="15.0" />
                            </font>
                         </Label>
-                        <TextField fx:id="tf_a1" layoutX="47.0" layoutY="61.0" prefHeight="25.0" prefWidth="48.0" />
-                        <TextField fx:id="tf_b1" layoutX="143.0" layoutY="59.0" prefHeight="25.0" prefWidth="51.0" />
+                        <TextField fx:id="tf_a1" alignment="CENTER" layoutX="50.0" layoutY="61.0" prefHeight="25.0" prefWidth="50.0" promptText="a" />
+                        <TextField fx:id="tf_b1" alignment="CENTER" layoutX="140.0" layoutY="59.0" prefHeight="25.0" prefWidth="50.0" promptText="b" />
                         <Label layoutX="111.0" layoutY="58.0" text="x+">
                            <font>
                               <Font size="19.0" />
                            </font>
                         </Label>
                         <Line endX="50.0" layoutX="149.0" layoutY="93.0" startX="-100.0" strokeMiterLimit="5.0" />
-                        <TextField fx:id="tf_c1" layoutX="47.0" layoutY="102.0" prefHeight="25.0" prefWidth="50.0" />
-                        <TextField fx:id="tf_d1" layoutX="142.0" layoutY="102.0" prefHeight="25.0" prefWidth="53.0" />
+                        <TextField fx:id="tf_c1" alignment="CENTER" layoutX="50.0" layoutY="102.0" prefHeight="25.0" prefWidth="50.0" promptText="c" />
+                        <TextField fx:id="tf_d1" alignment="CENTER" layoutX="140.0" layoutY="102.0" prefHeight="25.0" prefWidth="50.0" promptText="d" />
                         <Label layoutX="109.0" layoutY="100.0" text="x+">
                            <font>
                               <Font size="19.0" />
@@ -194,7 +194,7 @@
                               <Font size="15.0" />
                            </font>
                         </Label>
-                        <TextField fx:id="tf_custom" layoutX="69.0" layoutY="69.0" prefHeight="25.0" prefWidth="244.0" />
+                        <TextField fx:id="tf_custom" alignment="CENTER" layoutX="69.0" layoutY="69.0" prefHeight="25.0" prefWidth="240.0" promptText="Example: x^2+2*x+3" />
                      </children>
                   </AnchorPane>
               </content>
@@ -203,7 +203,7 @@
       </TabPane>
       <ScrollPane layoutY="317.0" prefHeight="285.0" prefViewportHeight="469.0" prefViewportWidth="541.0" prefWidth="352.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="317.0">
          <content>
-            <TextArea fx:id="ta_KSHS" layoutX="1.0" layoutY="296.0" prefHeight="756.0" prefWidth="399.0" AnchorPane.leftAnchor="0.0" />
+            <TextArea fx:id="ta_KSHS" layoutX="1.0" layoutY="296.0" prefHeight="745.0" prefWidth="348.0" AnchorPane.leftAnchor="0.0" />
          </content>
       </ScrollPane>
       <ScrollPane fx:id="scrollPane" layoutX="352.0" layoutY="24.0" minHeight="-Infinity" minWidth="-Infinity" prefHeight="426.0" prefWidth="448.0" AnchorPane.bottomAnchor="150.0" AnchorPane.leftAnchor="352.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="24.0">
@@ -216,12 +216,12 @@
             <Group fx:id="group" />
          </children>
       </StackPane>
-      <Button fx:id="btnKhaoSat" layoutX="31.0" layoutY="275.0" mnemonicParsing="false" onAction="#KhaoSat" text="Khảo sát" />
-      <Button fx:id="btnNhapLai" layoutX="118.0" layoutY="275.0" mnemonicParsing="false" onAction="#NhapLai" text="Nhập lại" />
+      <Button fx:id="btnKhaoSat" alignment="CENTER" layoutX="20.0" layoutY="275.0" mnemonicParsing="false" onAction="#KhaoSat" prefHeight="25.0" prefWidth="75.0" text="Khảo sát" />
+      <Button fx:id="btnNhapLai" layoutX="115.0" layoutY="275.0" mnemonicParsing="false" onAction="#NhapLai" prefHeight="25.0" prefWidth="75.0" text="Nhập lại" />
       <Label layoutX="20.0" layoutY="200.0" text="Giới hạn khảo sát" />
-      <TextField fx:id="tf_min" layoutX="149.0" layoutY="196.0" prefHeight="25.0" prefWidth="59.0" />
-      <TextField fx:id="tf_max" layoutX="242.0" layoutY="195.0" prefHeight="25.0" prefWidth="59.0" />
-      <Button fx:id="btnZoomOut" layoutX="233.0" layoutY="289.0" mnemonicParsing="false" onAction="#ZoomOut" prefHeight="25.0" prefWidth="77.0" text="Zoom Out" />
-      <Button fx:id="btnZoomIn" layoutX="233.0" layoutY="248.0" mnemonicParsing="false" onAction="#ZoomIn" prefHeight="25.0" prefWidth="77.0" text="Zoom In" />
+      <TextField fx:id="tf_min" layoutX="127.0" layoutY="196.0" prefHeight="25.0" prefWidth="50.0" />
+      <TextField fx:id="tf_max" layoutX="214.0" layoutY="196.0" prefHeight="25.0" prefWidth="50.0" />
+      <Button fx:id="btnZoomOut" layoutX="208.0" layoutY="288.0" mnemonicParsing="false" onAction="#ZoomOut" prefHeight="25.0" prefWidth="75.0" text="Zoom Out" />
+      <Button fx:id="btnZoomIn" layoutX="208.0" layoutY="250.0" mnemonicParsing="false" onAction="#ZoomIn" prefHeight="25.0" prefWidth="75.0" text="Zoom In" />
    </children>
 </AnchorPane>

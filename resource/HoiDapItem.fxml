@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.effect.*?>
 <?import javafx.scene.text.*?>
 <?import javafx.scene.control.*?>
 <?import java.lang.*?>
@@ -18,8 +19,8 @@
       <Label layoutX="12.0" layoutY="84.0" text="tag" />
       <Text fx:id="txtUserName" layoutX="79.0" layoutY="77.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Yasuo" wrappingWidth="250.13671875" />
       <Text fx:id="txtTag" layoutX="78.0" layoutY="98.0" strokeType="OUTSIDE" strokeWidth="0.0" text="lol lop8 binhduong" wrappingWidth="250.13671875" />
-      <Button fx:id="btnXem" layoutX="370.0" layoutY="61.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="65.0" text="Xem" />
-      <Label fx:id="txtTieuDe" alignment="TOP_LEFT" contentDisplay="TOP" disable="true" layoutX="83.0" layoutY="8.0" prefHeight="52.0" prefWidth="274.0" text="Label" wrapText="true">
+      <Button fx:id="btnXem" layoutX="363.0" layoutY="61.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="75.0" text="Xem" />
+      <Label fx:id="txtTieuDe" alignment="TOP_LEFT" contentDisplay="TOP" disable="true" layoutX="80.0" layoutY="9.0" prefHeight="52.0" prefWidth="274.0" text="Label" wrapText="true">
          <font>
             <Font name="System Bold" size="15.0" />
          </font>

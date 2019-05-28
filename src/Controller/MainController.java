@@ -147,7 +147,7 @@ public class MainController implements Initializable{
 	@FXML
 	private javafx.scene.control.TextArea ta_KSHS;
 	
-	String backgroundColor="-fx-background-color: rgb(255,255,255);";
+	String backgroundColor="-fx-background-color: rgb(0,0,0);";
 	Axes axes;
 	Plot plot,plot1,plot2;
 	int min,max;
@@ -317,7 +317,7 @@ public class MainController implements Initializable{
         stackPane.getChildren().addAll(plot);
         stackPane.setPadding(new Insets(20));
         stackPane.setStyle(backgroundColor);
-        stackPane.setBackground(new Background(new BackgroundFill(Color.rgb(10, 10, 20), CornerRadii.EMPTY, Insets.EMPTY)));
+        //stackPane.setBackground(new Background(new BackgroundFill(Color.rgb(10, 10, 20), CornerRadii.EMPTY, Insets.EMPTY)));
         
 	}
 	public void Draw(Double zoom) // vẽ truc toa do
@@ -349,7 +349,7 @@ public class MainController implements Initializable{
         stackPane.getChildren().addAll(axes);
         stackPane.setPadding(new Insets(20));
         stackPane.setStyle(backgroundColor);
-        //stackPane.setBackground(new Background(new BackgroundFill(Color.rgb(10, 10, 20), CornerRadii.EMPTY, Insets.EMPTY)));
+        stackPane.setBackground(new Background(new BackgroundFill(Color.rgb(10, 10, 20), CornerRadii.EMPTY, Insets.EMPTY)));
         
 	}
 	public void KhaoSatBacHai(double zoom)
