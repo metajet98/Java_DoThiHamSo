@@ -33,6 +33,12 @@
           <exclude>**/*.java</exclude>
         </excludes>
       </resource>
+      <resource>
+        <directory>JSON</directory>
+        <excludes>
+          <exclude>**/*.json</exclude>
+        </excludes>
+      </resource>
     </resources>
     <plugins>
       <plugin>

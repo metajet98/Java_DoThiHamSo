@@ -5,6 +5,7 @@ import java.text.DecimalFormat;
 
 import javax.swing.JOptionPane;
 
+import TienIch.TienIch;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Line;
 import javafx.scene.shape.Rectangle;
@@ -262,11 +263,11 @@ public class PTB2 {
 			setGTLN("\nGiá trị lớn nhất: "+GTLN);
 			setGTNN("\nGía trị nhỏ nhất: Không xác định");
 		}
-    	khaosat= "TXĐ :"+getTXD()+'\n' + "Giới hạn :"+ getGioiHan() +'\n'+
-				getDBNB();
+    	khaosat= "TXĐ :"+getTXD()+TienIch.br + "Giới hạn :"+ getGioiHan() +TienIch.br +
+				getDBNB()+TienIch.br;
     	//khaosat +="\n Phương trình y'' = "+ 6 * _a3 + " .x + " + 2 * _b3+" = 0  có nghiệm \n x = " + xdiemuon + " => I(" + xdiemuon + "," + ydiemuon + ")\n là điểm uốn của đồ thị hàm số đã cho \n";
-    	khaosat += getDiemUon();
-    	khaosat += getGTLN()+getGTNN();
+    	khaosat += getDiemUon()+TienIch.br;
+    	khaosat += getGTLN()+TienIch.br +getGTNN();
 	}
 
 }

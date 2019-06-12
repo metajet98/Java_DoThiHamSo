@@ -17,4 +17,5 @@ public class TienIch {
 		    }
 		});
 	}
+	public static String br = "\n ------------------------ \n";
 }

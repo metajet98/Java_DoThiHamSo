@@ -5,6 +5,7 @@ import java.text.DecimalFormat;
 import javax.sound.sampled.LineListener;
 import javax.swing.JOptionPane;
 
+import TienIch.TienIch;
 import javafx.scene.Group;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Line;
@@ -430,15 +431,15 @@ public class PTTrungPhuong {
 				set_yPhay("y'="+4*_a4+"x^3 + "+2*_b4+"x \n y'=0 => x2="+x2+"");
 				setDBNB("Hàm số nghịch biến trên và (" + x2 + ",+oo)\nHàm số đồng biến trên (-oo," + x2 + ")");
 				setCucdai(cucdai);
-				cuctri+="\nHàm số đạt giá trị lớn nhất tại x= "+x2+", giá trị lớn nhất GTLN= "+cucdai+"";
+				cuctri+=TienIch.br +"\nHàm số đạt giá trị lớn nhất tại x= "+x2+", giá trị lớn nhất GTLN= "+cucdai+"";
 				set_y2Phay("y''="+12*_a4+"x^2 +"+2*_b4+"");
 				setDiemUon("\nHàm số không có điểm uốn");
 				setCuctri(cuctri);
 			}
 		}
-		khaosat = "TXĐ :" + getTXD() + '\n' + "Giới hạn :" + getGioiHan() + '\n' + get_yPhay() + '\n' + getDBNB();
-		khaosat += "\n"+getDiemUon();
-		khaosat += "\nCực trị: \n" + getCuctri();
+		khaosat = "TXĐ :" + getTXD() +TienIch.br + "Giới hạn :" + getGioiHan() +TienIch.br + get_yPhay() +TienIch.br + getDBNB();
+		khaosat += "\n"+getDiemUon()+TienIch.br;
+		khaosat += "\nCực trị: \n" + getCuctri()+TienIch.br;
 //		khaosat += "\n GTLN :" + getGTLN();
 //		khaosat += "\n GTNN :" + getGTNN();
 	}

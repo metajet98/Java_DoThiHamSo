@@ -52,7 +52,7 @@ public class TraLoiTopicController implements Initializable {
 	@FXML
 	private Label txtTieuDe;
 	@FXML
-	private Label txtNoiDung;
+	private TextArea txtNoiDung;
 	@FXML
 	private Label txtSoCmt;
 	@FXML
@@ -91,6 +91,10 @@ public class TraLoiTopicController implements Initializable {
 
             // Setup the window/stage
             thisStage.setTitle("Trả lời!");
+            thisStage.setMinHeight(700);
+            thisStage.setMinWidth(440);
+            thisStage.setMaxWidth(440);
+            thisStage.setMaxHeight(700);
 
         } catch (IOException e) {
             e.printStackTrace();

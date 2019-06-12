@@ -6,27 +6,33 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane prefHeight="653.0" prefWidth="429.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane prefHeight="653.0" prefWidth="421.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
    <children>
-      <ListView fx:id="listViewCmt" layoutX="15.0" layoutY="172.0" prefHeight="195.0" prefWidth="390.0" />
-      <Label layoutX="15.0" layoutY="5.0" prefHeight="32.0" prefWidth="50.0" text="Tiêu đề">
+      <ListView fx:id="listViewCmt" layoutX="15.0" layoutY="208.0" prefHeight="262.0" prefWidth="390.0" />
+      <Label layoutX="15.0" layoutY="5.0" prefHeight="32.0" prefWidth="69.0" text="Tiêu đề: ">
+         <font>
+            <Font name="System Bold" size="15.0" />
+         </font></Label>
+      <Label alignment="TOP_LEFT" layoutX="15.0" layoutY="39.0" prefHeight="25.0" prefWidth="56.0" text="Nội dung">
+         <font>
+            <Font name="System Bold" size="12.0" />
+         </font></Label>
+      <Label fx:id="txtSoCmt" layoutX="15.0" layoutY="182.0" text="Trả lời: 0" />
+      <TextField fx:id="txtUserName" layoutX="16.0" layoutY="501.0" />
+      <Button fx:id="btnGuiBinhLuan" layoutX="15.0" layoutY="612.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="75.0" text="Trả lời" />
+      <Label layoutX="17.0" layoutY="474.0" text="Tên hiển thị" />
+      <Label layoutX="15.0" layoutY="530.0" text="Nội dung trả lời" />
+      <Label fx:id="txtTieuDe" layoutX="79.0" layoutY="9.0" prefHeight="25.0" prefWidth="326.0" text="abc xyz">
          <font>
             <Font size="15.0" />
          </font></Label>
-      <Label alignment="TOP_LEFT" layoutX="15.0" layoutY="39.0" prefHeight="25.0" prefWidth="56.0" text="Nội dung" />
-      <Label fx:id="txtSoCmt" layoutX="15.0" layoutY="146.0" text="Trả lời: 0" />
-      <TextField fx:id="txtUserName" layoutX="15.0" layoutY="439.0" />
-      <Button fx:id="btnGuiBinhLuan" layoutX="15.0" layoutY="606.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="75.0" text="Trả lời" />
-      <Label layoutX="15.0" layoutY="410.0" text="Tên hiển thị" />
-      <Label layoutX="15.0" layoutY="475.0" text="Bình luận" />
-      <Label fx:id="txtTieuDe" layoutX="77.0" layoutY="9.0" prefHeight="25.0" prefWidth="326.0" text="abc xyz">
+      <Label fx:id="txtSoLuotXem" layoutX="89.0" layoutY="182.0" text="Lượt xem: 0" />
+      <Label layoutX="240.0" layoutY="43.0" text="Người hỏi: ">
          <font>
-            <Font size="15.0" />
+            <Font name="System Bold" size="12.0" />
          </font></Label>
-      <Label fx:id="txtNoiDung" alignment="TOP_LEFT" layoutX="15.0" layoutY="64.0" prefHeight="77.0" prefWidth="402.0" text="Cho em hỏi về đề tài...." />
-      <Label fx:id="txtSoLuotXem" layoutX="89.0" layoutY="146.0" text="Lượt xem: 0" />
-      <Label layoutX="240.0" layoutY="43.0" text="Người hỏi: " />
       <Label fx:id="txtNguoiHoi" layoutX="313.0" layoutY="43.0" prefHeight="17.0" prefWidth="97.0" text="abc" />
-      <TextArea fx:id="txtComment" layoutX="15.0" layoutY="499.0" prefHeight="95.0" prefWidth="390.0" />
+      <TextArea fx:id="txtComment" layoutX="15.0" layoutY="554.0" prefHeight="50.0" prefWidth="390.0" />
+      <TextArea fx:id="txtNoiDung" editable="false" layoutX="14.0" layoutY="64.0" prefHeight="110.0" prefWidth="390.0" />
    </children>
 </AnchorPane>

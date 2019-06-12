@@ -4,6 +4,7 @@ import java.text.DecimalFormat;
 
 import javax.swing.JOptionPane;
 
+import TienIch.TienIch;
 import javafx.scene.Group;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Line;
@@ -203,7 +204,7 @@ public class PT_Hypebol {
 	public void KhaoSatPT_Hypebol() {
 		// TXD
 		khaosat = null;
-		cuctri = null;
+		cuctri = "";
 		setTXD("Tập Xác Định: D = (-oo, + " + -_d1 / _c1 + ") và (" + -_d1 / _c1 + ", +oo )");
 		tsyphay = _a1 * _d1 - _b1 * _c1;
 		this.d = _a1 * _d1 - _b1 * _c1;
@@ -226,9 +227,9 @@ public class PT_Hypebol {
 			setCuctri("Nhận xét: Hàm số đã cho không có cực trị.");
 		}
 		set_yPhay("* y' = " + tsyphay + "/[(" + _c1 + ".x + " + _d1 + ")^2]");
-		khaosat = "TXĐ :" + getTXD() + '\n' + "Giới hạn :" + getGioiHan() + '\n' + get_yPhay() + '\n' + getDBNB()
-				+ '\n';
-		khaosat += "Cực trị: \n" + getCuctri();
+		khaosat = "TXĐ :" + getTXD() +TienIch.br + "Giới hạn :" + getGioiHan() +TienIch.br + get_yPhay() +TienIch.br + getDBNB()
+		+TienIch.br;
+		khaosat += "Cực trị: \n" + getCuctri()+TienIch.br;
 
 	}
 

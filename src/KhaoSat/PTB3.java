@@ -5,6 +5,7 @@ import java.text.DecimalFormat;
 
 import javax.swing.JOptionPane;
 
+import TienIch.TienIch;
 import javafx.scene.Group;
 
 import javafx.scene.paint.Color;
@@ -422,7 +423,7 @@ public class PTB3 {
 	public void KhaoSatPTB3() {
 		// TXD
 		khaosat = null;
-		cuctri = null;
+		cuctri = "";
 		setTXD("Tập Xác Định: D=R");
 		double delta;
 		delta = 2 * _b3 * 2 * _b3 - 4 * 3 * _a3 * _c3;
@@ -633,12 +634,12 @@ public class PTB3 {
 			}
 		}
 		set_yPhay("* y' = " + _a3 * 3 + " .x^2 + " + _b3 * 2 + ".x + " + _c3);
-		khaosat = "TXĐ :" + getTXD() + '\n' + "Giới hạn :" + getGioiHan() + '\n' + get_yPhay() + '\n' + getDBNB();
+		khaosat = "TXĐ :" + getTXD() +TienIch.br + "Giới hạn :" + getGioiHan() +TienIch.br + get_yPhay() +TienIch.br + getDBNB();
 		khaosat += "\n Phương trình y'' = " + 6 * _a3 + " .x + " + 2 * _b3 + " = 0  có nghiệm \n x = " + xdiemuon
-				+ " => I(" + xdiemuon + "," + ydiemuon + ")\n là điểm uốn của đồ thị hàm số đã cho \n";
-		khaosat += "Cực trị: \n" + getCuctri();
-		khaosat += "\n GTLN :" + getGTLN();
-		khaosat += "\n GTNN :" + getGTNN();
+				+ " => I(" + xdiemuon + "," + ydiemuon + ")\n là điểm uốn của đồ thị hàm số đã cho \n"+TienIch.br;
+		khaosat += "Cực trị: \n" + getCuctri()+TienIch.br;
+		khaosat += "\n GTLN :" + getGTLN()+TienIch.br;
+		khaosat += "\n GTNN :" + getGTNN()+TienIch.br;
 	}
 
 	public String get_yPhay() {

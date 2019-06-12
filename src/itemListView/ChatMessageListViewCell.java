@@ -13,6 +13,8 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListCell;
+import javafx.scene.control.TextArea;
+import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.layout.AnchorPane;
 	
@@ -26,7 +28,7 @@ public class ChatMessageListViewCell extends ListCell<ChatMessenge>  {
 	@FXML
 	private Label lbTime;
 	@FXML
-	private JFXTextArea txtText;
+	private TextArea txtText;
 	@FXML  
 	private AnchorPane anchorPane;
 	FXMLLoader mLoader;

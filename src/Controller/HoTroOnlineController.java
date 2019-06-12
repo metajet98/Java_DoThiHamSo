@@ -2,6 +2,7 @@ package Controller;
 
 import java.io.FileInputStream;
 import java.io.IOException;
+import java.io.InputStream;
 import java.net.URL;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
@@ -72,9 +73,9 @@ public class HoTroOnlineController implements Initializable  {
 	@FXML
 	private Button btnDangBai;
 	@FXML
-	private JFXListView<ChatMessenge> listViewChat;
+	private ListView<ChatMessenge> listViewChat;
 	@FXML
-	private JFXListView<Topic> listViewTopic;
+	private ListView<Topic> listViewTopic;
 	
 	ObservableList<ChatMessenge> listChat= FXCollections.observableArrayList();
 	ObservableList<Topic> listTopic= FXCollections.observableArrayList();
@@ -130,8 +131,9 @@ public class HoTroOnlineController implements Initializable  {
 		boolean hasBeenInitialized=false;
 		System.out.println("load Json File");
 		
-		FileInputStream serviceAccount =
-				  new FileInputStream("firestore.json");
+		URL jsonURL= getClass().getClassLoader().getResource("firestore.json");
+		
+		InputStream serviceAccount =jsonURL.openStream();
 		
 		
 		

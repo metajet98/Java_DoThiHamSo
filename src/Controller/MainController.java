@@ -15,6 +15,8 @@ import java.util.regex.Pattern;
 import javax.security.auth.kerberos.KerberosTicket;
 
 import com.google.cloud.firestore.v1beta1.FirestoreClient.ListCollectionIdsFixedSizeCollection;
+import com.sun.glass.ui.Application;
+import com.sun.glass.ui.Robot;
 
 import CoreDraw.Axes;
 import CoreDraw.Plot;
@@ -23,6 +25,7 @@ import KhaoSat.PTB3;
 import KhaoSat.PTTrungPhuong;
 import KhaoSat.PT_Hypebol;
 import TienIch.TienIch;
+import application.Main;
 import javafx.application.Platform;
 import javafx.beans.binding.Bindings;
 import javafx.beans.value.ChangeListener;
@@ -31,7 +34,10 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.geometry.Bounds;
 import javafx.geometry.Insets;
+import javafx.geometry.Point2D;
+import javafx.geometry.Point3D;
 import javafx.geometry.Side;
 import javafx.scene.Group;
 import javafx.scene.Node;
@@ -44,12 +50,15 @@ import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Button;
 import javafx.scene.control.ButtonType;
+import javafx.scene.control.ComboBox;
 import javafx.scene.control.MenuBar;
 import javafx.scene.control.MenuItem;
+import javafx.scene.control.ScrollBar;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.control.Tab;
 import javafx.scene.control.TabPane;
 import javafx.scene.control.TextField;
+import javafx.scene.input.ScrollEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.Background;
 import javafx.scene.layout.BackgroundFill;
@@ -68,7 +77,7 @@ import javafx.stage.Stage;
 
 public class MainController implements Initializable{
 	
-	
+	Robot robot =Application.GetApplication().createRobot();
 	final int DEFAULT_CHIA_AXES=1;
 	final int DEFAULT_MAX_AXES=20;
 	
@@ -137,7 +146,9 @@ public class MainController implements Initializable{
 	
 	@FXML
 	private Group group;
-
+	@FXML
+	private ComboBox<String> cbxChoose;
+	private String[] str = {"sin(x)","cos(x)","tan(x)","cot(x)","log(x)","log2(x)","log10(x)"};
 	
 	@FXML
 	private ScrollPane scrollPane;
@@ -147,7 +158,7 @@ public class MainController implements Initializable{
 	@FXML
 	private javafx.scene.control.TextArea ta_KSHS;
 	
-	String backgroundColor="-fx-background-color: rgb(0,0,0);";
+	String backgroundColor="-fx-background-color: rgb(255,255,255);";
 	Axes axes;
 	Plot plot,plot1,plot2;
 	int min,max;
@@ -167,6 +178,91 @@ public class MainController implements Initializable{
         min = (int)(-DEFAULT_MAX_AXES/currentZoom);
         max = (int)(DEFAULT_MAX_AXES/currentZoom);
         
+        cbxChoose.getItems().addAll(str);
+        stackPane.setOnScroll(event->HandleOnScroll(event));
+        
+       
+	}
+	private void HandleOnScroll(ScrollEvent event)
+	{	
+		double mainX=Main.getRootStage().getX();
+		double mainY=Main.getRootStage().getY();
+		int x = robot.getMouseX(); 
+		int y = robot.getMouseY();
+		
+		double positionX=(x-mainX-363);
+		double positionY=(y-mainY-58);
+		
+		double width=stackPane.getWidth();
+		double height=stackPane.getHeight();
+		
+		double tileX=positionX/width+0.2;
+		double tileY=positionY/height+0.2;
+		
+
+		
+		System.out.println("x: "+tileX+ " y: "+tileY);
+		
+		int currentTabScroll= tabPane.getSelectionModel().getSelectedIndex();
+		 
+		double deltaY=event.getDeltaY();
+		System.out.println("Scroll: "+deltaY);
+		if(deltaY>0)
+		{
+			switch (currentTabScroll) {
+			case 0:
+				KhaoSatBacHai(1.1);
+				break;
+			case 1:
+				KhaoSatBacBa(1.1);
+				break;
+			case 2:
+				KhaoSatBacBon(1.1);
+				break;
+			case 3:
+				KhaoSatBacNhat(1.1);
+				break;
+			case 4:
+				
+				KhaoSatTuyChon(1.1);
+				break;
+
+			default:
+				break;
+			}
+		}
+		else {
+			switch (currentTabScroll) {
+			case 0:
+				KhaoSatBacHai(0.8);
+				break;
+			case 1:
+				KhaoSatBacBa(0.8);
+				break;
+			case 2:
+				KhaoSatBacBon(0.8);
+				break;
+			case 3:
+				KhaoSatBacNhat(0.8);
+				tf_custom.clear();
+				break;
+			case 4:
+				KhaoSatTuyChon(0.8);
+				break;
+
+			default:
+				break;
+			}
+		}
+		Platform.runLater(new Runnable() {
+		    @Override
+		    public void run() {
+		    	scrollPane.setVvalue(tileY);
+				scrollPane.setHvalue(tileX);
+		    }
+		});
+		
+
 	}
 	public void Close()
 	{
@@ -222,7 +318,7 @@ public class MainController implements Initializable{
         stackPane.getChildren().add(plot);
         stackPane.setPadding(new Insets(20));
         stackPane.setStyle(backgroundColor);
-        stackPane.setBackground(new Background(new BackgroundFill(Color.rgb(10, 10, 20), CornerRadii.EMPTY, Insets.EMPTY)));
+        stackPane.setBackground(new Background(new BackgroundFill(Color.rgb(255,255,255), CornerRadii.EMPTY, Insets.EMPTY)));
         
         
         
@@ -280,7 +376,7 @@ public class MainController implements Initializable{
         stackPane.getChildren().addAll(plot);
         stackPane.setPadding(new Insets(20));
         stackPane.setStyle(backgroundColor);
-        stackPane.setBackground(new Background(new BackgroundFill(Color.rgb(10, 10, 20), CornerRadii.EMPTY, Insets.EMPTY)));
+        stackPane.setBackground(new Background(new BackgroundFill(Color.rgb(255,255,255), CornerRadii.EMPTY, Insets.EMPTY)));
         
         
         
@@ -317,7 +413,7 @@ public class MainController implements Initializable{
         stackPane.getChildren().addAll(plot);
         stackPane.setPadding(new Insets(20));
         stackPane.setStyle(backgroundColor);
-        //stackPane.setBackground(new Background(new BackgroundFill(Color.rgb(10, 10, 20), CornerRadii.EMPTY, Insets.EMPTY)));
+        stackPane.setBackground(new Background(new BackgroundFill(Color.rgb(255,255,255), CornerRadii.EMPTY, Insets.EMPTY)));
         
 	}
 	public void Draw(Double zoom) // vẽ truc toa do
@@ -349,7 +445,7 @@ public class MainController implements Initializable{
         stackPane.getChildren().addAll(axes);
         stackPane.setPadding(new Insets(20));
         stackPane.setStyle(backgroundColor);
-        stackPane.setBackground(new Background(new BackgroundFill(Color.rgb(10, 10, 20), CornerRadii.EMPTY, Insets.EMPTY)));
+        stackPane.setBackground(new Background(new BackgroundFill(Color.rgb(255,255,255), CornerRadii.EMPTY, Insets.EMPTY)));
         
 	}
 	public void KhaoSatBacHai(double zoom)
@@ -530,8 +626,7 @@ public class MainController implements Initializable{
 			break;
 		}
 	    
-	    scrollPane.setVvalue(5.0);
-	    scrollPane.setHvalue(5.0);
+
 	    
 
 		
@@ -564,8 +659,7 @@ public class MainController implements Initializable{
 			break;
 		}
 	    
-	    scrollPane.setVvalue(5.0);
-	    scrollPane.setHvalue(5.0);
+
 	}
 	public void NhapLai(ActionEvent actionEvent)
 	{	
@@ -628,8 +722,10 @@ public class MainController implements Initializable{
             Stage stage = new Stage();
             stage.setTitle("Cộng đồng Hỗ trợ Online");
             stage.setScene(new Scene(root));
-			stage.setMinHeight(600);
-			stage.setMinWidth(800);
+			stage.setMinHeight(670);
+			stage.setMinWidth(890);
+			stage.setMaxHeight(670);
+			stage.setMaxWidth(890);
             stage.show();
         }
         catch (IOException e) {
@@ -637,5 +733,8 @@ public class MainController implements Initializable{
         }
 	}
 
-	
+
+	public void Choose(ActionEvent e) {
+		tf_custom.setText(tf_custom.getText()+cbxChoose.getValue());
+	}
 }

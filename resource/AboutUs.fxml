@@ -1,13 +1,22 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.control.*?>
 <?import javafx.scene.text.*?>
 <?import java.lang.*?>
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.layout.AnchorPane?>
 
-
-<AnchorPane prefHeight="304.0" prefWidth="377.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8">
+<AnchorPane prefHeight="304.0" prefWidth="377.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
    <children>
-      <Text layoutX="61.0" layoutY="98.0" strokeType="OUTSIDE" strokeWidth="0.0" text="About Us" />
+      <Text layoutX="14.0" layoutY="31.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Đụt team: UIT K11">
+         <font>
+            <Font name="System Bold" size="16.0" />
+         </font>
+      </Text>
+      <Text layoutX="14.0" layoutY="59.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Thành viên" />
+      <Text layoutX="102.0" layoutY="59.0" strokeType="OUTSIDE" strokeWidth="0.0" text="16520068: Nguyễn Xuân Bắc" />
+      <Text layoutX="103.0" layoutY="86.0" strokeType="OUTSIDE" strokeWidth="0.0" text="16520131: Nguyễn Thành Công" />
+      <Text layoutX="103.0" layoutY="116.0" strokeType="OUTSIDE" strokeWidth="0.0" text="16520246: Phạm Thanh Đức" />
+      <Text layoutX="14.0" layoutY="157.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Ý kiến đóng góp xin gửi về: 16520068@gm.uit.edu.vn" />
    </children>
 </AnchorPane>
